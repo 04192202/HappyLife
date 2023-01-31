@@ -13,24 +13,31 @@ class HomeVC: ButtonBarPagerTabStripViewController {
     
 
     override func viewDidLoad() {
-        //selectBar 按钮下面的条
+       // MARK: -  selectBar 按钮下面的条
         settings.style.selectedBarBackgroundColor = UIColor(named: "main")!
         settings.style.selectedBarHeight = 3
         settings.style.buttonBarItemBackgroundColor = .clear
-        
+        settings.style.buttonBarItemFont = .systemFont(ofSize: 16)
+        settings.style.buttonBarItemLeftRightMargin = 0
         
         super.viewDidLoad()
-
         
-        // Do any additional setup after loading the view.
+        containerView.bounces = false
+        changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+            guard changeCurrentIndex == true else { return }
+
+            oldCell?.label.textColor = .secondaryLabel
+            newCell?.label.textColor = .label
+        }
+
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let FollowVc = storyboard!.instantiateViewController(identifier: kFollowVCID)
+        let FollowVC = storyboard!.instantiateViewController(identifier: kFollowVCID)
         let NearByVC = storyboard!.instantiateViewController(identifier: kNearByVCID)
         let DiscoverVC = storyboard!.instantiateViewController(identifier: kDiscoverVCID)
         
-        return [FollowVc, NearByVC, DiscoverVC]
+        return [DiscoverVC,FollowVC,NearByVC,]
     }
 
 }
