@@ -8,16 +8,26 @@
 import UIKit
 
 
-// MARK: - sbID
+// MARK: StoryboardID
 let kFollowVCID = "FollowVCID"
-let kDiscoverVCID = "DiscoverVCID"
 let kNearByVCID = "NearByVCID"
+let kDiscoverVCID = "DiscoverVCID"
 let kWaterfallVCID = "WaterfallVCID"
+let kNoteEditVCID = "NoteEditVCID"
 
-
-// MARK: - cellID
+// MARK: Cell相关ID
 let kWaterfallCellID = "WaterfallCellID"
-let kWaterfallPadding:CGFloat = 4
+let kPhotoCellID = "PhotoCellID"
+let kPhotoFooterID = "PhotoFooterID"
 
+
+// MARK: - 业务逻辑相关
+//瀑布流
+let kWaterfallPadding: CGFloat = 4
 
 let kChannels = ["推荐","旅行","娱乐","才艺","美妆","美女","美食","萌宠"]
+
+//YPImagePicker
+let kMaxCameraZoomFactor: CGFloat = 5
+let kMaxPhotoCount = 9
+let kSpacingBetweenItems: CGFloat = 2

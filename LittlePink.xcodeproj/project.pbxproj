@@ -20,7 +20,10 @@
 		9D066E97297F7CC800536573 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D066E96297F7CC800536573 /* Constants.swift */; };
 		9DD039F02988144800E827C0 /* WaterfallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD039EF2988144800E827C0 /* WaterfallVC.swift */; };
 		9DD039F2298817F800E827C0 /* WaterfallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD039F1298817F800E827C0 /* WaterfallCell.swift */; };
-		9DD039F52988ACEF00E827C0 /* READ.md in Resources */ = {isa = PBXBuildFile; fileRef = 9DD039F42988ACEF00E827C0 /* READ.md */; };
+		9DD039F72988B1FA00E827C0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9DD039F62988B1FA00E827C0 /* README.md */; };
+		9DD039FE2988B54300E827C0 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD039FD2988B54300E827C0 /* PostVC.swift */; };
+		9DD03A042988B7E100E827C0 /* TabBarC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD03A032988B7E100E827C0 /* TabBarC.swift */; };
+		9DD03A062988BC5B00E827C0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD03A052988BC5B00E827C0 /* Extensions.swift */; };
 		E0288F43A66A9D1B7AFBD397 /* Pods_LittlePink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70E8E44A58A29D219D99460 /* Pods_LittlePink.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +44,10 @@
 		9D066E96297F7CC800536573 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9DD039EF2988144800E827C0 /* WaterfallVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallVC.swift; sourceTree = "<group>"; };
 		9DD039F1298817F800E827C0 /* WaterfallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallCell.swift; sourceTree = "<group>"; };
-		9DD039F42988ACEF00E827C0 /* READ.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = READ.md; sourceTree = "<group>"; };
+		9DD039F62988B1FA00E827C0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9DD039FD2988B54300E827C0 /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
+		9DD03A032988B7E100E827C0 /* TabBarC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarC.swift; sourceTree = "<group>"; };
+		9DD03A052988BC5B00E827C0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CE726EF01A00D7E582DDE28B /* Pods-LittlePink.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittlePink.debug.xcconfig"; path = "Target Support Files/Pods-LittlePink/Pods-LittlePink.debug.xcconfig"; sourceTree = "<group>"; };
 		F70E8E44A58A29D219D99460 /* Pods_LittlePink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LittlePink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -69,7 +75,7 @@
 		9D066E6A2967D76E00536573 = {
 			isa = PBXGroup;
 			children = (
-				9DD039F42988ACEF00E827C0 /* READ.md */,
+				9DD039F62988B1FA00E827C0 /* README.md */,
 				9D066E752967D76E00536573 /* LittlePink */,
 				9D066E742967D76E00536573 /* Products */,
 				DAC58190A9D3F705834645AF /* Pods */,
@@ -90,6 +96,8 @@
 			children = (
 				9D066E762967D76E00536573 /* AppDelegate.swift */,
 				9D066E782967D76E00536573 /* SceneDelegate.swift */,
+				9DD039FD2988B54300E827C0 /* PostVC.swift */,
+				9DD03A032988B7E100E827C0 /* TabBarC.swift */,
 				9D066E7C2967D76E00536573 /* Main.storyboard */,
 				9DD039F32988AC7D00E827C0 /* Waterfall */,
 				9D066E98297F7ED600536573 /* Home */,
@@ -117,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				9D066E96297F7CC800536573 /* Constants.swift */,
+				9DD03A052988BC5B00E827C0 /* Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -201,7 +210,7 @@
 			files = (
 				9D066E862967D76E00536573 /* LaunchScreen.storyboard in Resources */,
 				9D066E832967D76E00536573 /* Assets.xcassets in Resources */,
-				9DD039F52988ACEF00E827C0 /* READ.md in Resources */,
+				9DD039F72988B1FA00E827C0 /* README.md in Resources */,
 				9D066E7E2967D76E00536573 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,7 +269,10 @@
 				9DD039F2298817F800E827C0 /* WaterfallCell.swift in Sources */,
 				9D066E772967D76E00536573 /* AppDelegate.swift in Sources */,
 				9D066E8F2976CC1700536573 /* HomeVC.swift in Sources */,
+				9DD039FE2988B54300E827C0 /* PostVC.swift in Sources */,
 				9D066E91297F7A1700536573 /* FollowVC.swift in Sources */,
+				9DD03A042988B7E100E827C0 /* TabBarC.swift in Sources */,
+				9DD03A062988BC5B00E827C0 /* Extensions.swift in Sources */,
 				9D066E792967D76E00536573 /* SceneDelegate.swift in Sources */,
 				9D066E812967D76E00536573 /* LittlePink.xcdatamodeld in Sources */,
 				9D066E93297F7A3100536573 /* DiscoverVC.swift in Sources */,
@@ -294,6 +306,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -354,6 +367,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
