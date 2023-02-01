@@ -15,6 +15,7 @@ let kDiscoverVCID = "DiscoverVCID"
 let kWaterfallVCID = "WaterfallVCID"
 let kNoteEditVCID = "NoteEditVCID"
 
+
 // MARK: Cell相关ID
 let kWaterfallCellID = "WaterfallCellID"
 let kPhotoCellID = "PhotoCellID"
