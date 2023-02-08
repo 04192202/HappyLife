@@ -6,10 +6,7 @@
 //
 
 import UIKit
-import YPImagePicker
-import MBProgressHUD
-import SKPhotoBrowser
-import AVKit
+
 
 class NoteEditVC: UIViewController {
     
@@ -17,124 +14,171 @@ class NoteEditVC: UIViewController {
     
     var videoURL: URL?
     
+    var channel = ""
+    var subChannel = ""
+    var poiName = ""
+    
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var photoCollectionview: UICollectionView!
+    
+    @IBOutlet weak var titleCountLabel: UILabel!
+    
+    @IBOutlet weak var titleTextField: UITextField!
+    
+    
+    @IBOutlet weak var textView: UITextView!
+   
+    @IBOutlet weak var channelIcon: UIImageView!
+    
+    
+    @IBOutlet weak var channelLabel: UILabel!
+    
+    @IBOutlet weak var channelPlaceholderLabel: UILabel!
+    
+    @IBOutlet weak var poiNameLabel: UILabel!
+    
+    @IBOutlet weak var poiNameIcon: UIImageView!
+    
+    
+    
+    
     
     //计算属性
     var photoCount : Int {photos.count}
     var isVideo : Bool {videoURL != nil}
+    var textViewIAView: TextViewIAView{ textView.inputAccessoryView as! TextViewIAView }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        config()
         
-    }
-}
 
-extension NoteEditVC :UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        photoCount
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kPhotoCellID, for: indexPath) as! PhotoCell
-        cell.imageView.image = photos[indexPath.item]
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+   
         
-        switch kind {
-        case UICollectionView.elementKindSectionFooter:
-            let photoFooter = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kPhotoFooterID, for: indexPath) as! PhotoFooter
-            
-            photoFooter.addPhotoBtn.addTarget(self, action:#selector(addPhoto) , for: .touchUpInside)
-            
-            return photoFooter
-        default:
-            fatalError("Footer Wrong !")
-        }
         
     }
     
-    
-}
-    
-    
-    
-// MARK: - 发布预览图片
-extension NoteEditVC : UICollectionViewDelegate{
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    @IBAction func TFEditBegin(_ sender: Any) {
         
-        if isVideo{
-            let playerVC = AVPlayerViewController()
-            playerVC.player = AVPlayer(url: videoURL!)
-            present(playerVC,animated: true)
-            {
-            playerVC.player?.play()
-            }
-        } else {
-            var images :[SKPhoto] = []
-            
-            for photo in photos{
-                images.append(SKPhoto.photoWithImage(photo!))
-            }
-            
-            let brower = SKPhotoBrowser(photos: images, initialPageIndex: indexPath.item)
-            brower.delegate = self
-            SKPhotoBrowserOptions.displayAction = false
-            SKPhotoBrowserOptions.displayDeleteButton = true
-            present(brower,animated: true)
-        }
+        titleCountLabel.isHidden = false
     }
-}
-    // MARK: - SKPhotoBrowserDelegate 发布图片浏览删除
-extension NoteEditVC : SKPhotoBrowserDelegate{
-    func removePhoto(_ browser: SKPhotoBrowser, index: Int, reload: @escaping (() -> Void)) {
-        photos.remove(at: index)
-        photoCollectionview.reloadData()
-        reload()
+    
+    @IBAction func TFEditEnd(_ sender: Any) {
+        
+        titleCountLabel.isHidden = true
     }
-}
-   // MARK: - 监听
+    //点击软键盘的完成按钮收起软键盘\
+    @IBAction func TFEndOnExit(_ sender: Any) {
+    }
 
-extension NoteEditVC{
-    @objc private func addPhoto(){
-        if photoCount < kMaxPhotoCount{
-            var config = YPImagePickerConfiguration()
+    
+    @IBAction func TFEditChanged(_ sender: Any) {
+        
+        // MARK: - 发布栏标题
+        //当前有高亮文本时(拼音键盘)return
+        guard titleTextField.markedTextRange == nil else { return }
+        
+        //用户输入完字符后进行判断,若大于最大字符数,则截取前面的文本(if里面第一行)
+        if titleTextField.unwrappedText.count > kMaxNoteTitleCount{
+        //prefix截取
+            titleTextField.text = String(titleTextField.unwrappedText.prefix(kMaxNoteTitleCount))
             
-            // MARK: 通用配置
-            config.albumName = Bundle.main.appName //存图片进相册App的'我的相簿'里的文件夹名称
-            config.screens = [.library] //展示相册
+            showTextHUD("标题最多输入\(kMaxNoteTitleCount)字")
             
-            // MARK: 相册配置
-            config.library.defaultMultipleSelection = true //是否可多选
-            config.library.maxNumberOfItems = kMaxPhotoCount - photoCount //最大选取照片或视频数
-            config.library.spacingBetweenItems = kSpacingBetweenItems //照片缩略图之间的间距
-            
-            // MARK: - Gallery(多选完后的展示和编辑页面)-画廊
-            config.gallery.hidesRemoveButton = false //每个照片或视频右上方是否有删除按钮
-            
-            let picker = YPImagePicker(configuration: config)
-            
-            // MARK: 选完或按取消按钮后的异步回调处理（依据配置处理单个或多个）
-            picker.didFinishPicking { [unowned picker] items, _ in
+            //用户粘贴文本后的光标位置,默认会跑到粘贴文本的前面,此处改成末尾
+            DispatchQueue.main.async {
+                let end = self.titleTextField.endOfDocument //文末
+                // textRange 光标
+                self.titleTextField.selectedTextRange = self.titleTextField.textRange(from: end, to: end)
+            }
+        }
+        titleCountLabel.text = "\(kMaxNoteTitleCount - titleTextField.unwrappedText.count)"
+
+    }
+    
+    //存草稿和发布笔记之前需判断当前用户输入的正文文本数量,看是否大于最大可输入数量
+    @IBAction func saveDraftNote(_ sender: Any) {
+        
+        guard textViewIAView.currentTextCount <= kMaxNoteTextCount else{
+            showTextHUD("正文最多输入\(kMaxNoteTextCount)字")
+            return
+        }
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        //面向对象的方法存数据
+        let draftNote = DraftNote (context: context)
+        //coredata 定义字段和全局一样
+        draftNote.coverPhoto = photos[0]?.pngData()
+        draftNote.title = titleTextField.exacText
+        draftNote.text = textView.exacText
+        draftNote.channel = channel
+        draftNote.subChannel = subChannel
+        draftNote.poiName = poiName
+        draftNote.updateAt = Date()
+        appDelegate.saveContext()
+    }
+    
+    @IBAction func postNote(_ sender: Any) {
+    }
+    
   
-                for item in items {
-                    if case let .photo(photo) = item{
-                        self.photos.append(photo.image)
-                    }
-                }
-                //重新加载datasource
-                self.photoCollectionview.reloadData()
-                
-                picker.dismiss(animated: true)
-            }
-            
-            present(picker, animated: true)
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let channelVC = segue.destination as? ChannelVC{
+            view.endEditing(true)
+            channelVC.PVDelegate = self
+        }else if let poiVC = segue.destination as? POIVC{
+            poiVC.delegate = self
+            poiVC.poiName = poiName
+        }
+    }
+    
+}
+
+// MARK: - UITextViewDelegate
+extension NoteEditVC: UITextViewDelegate{
+    func textViewDidChange(_ textView: UITextView) {
+        
+        guard textView.markedTextRange == nil else { return }
+        
+        textViewIAView.currentTextCount = textView.text.count
+    }
+}
+
+// MARK: - ChannelVCDelegate
+extension NoteEditVC: ChannelVCDelegate{
+    func updateChannel(channel: String, subChannel: String) {
+        //数据
+        self.channel = channel
+        self.subChannel = subChannel
+        //UI
+        channelIcon.tintColor = blueColor
+        channelLabel.text = subChannel
+        channelLabel.textColor = blueColor
+        channelPlaceholderLabel.isHidden = true
+    }
+}
+
+// MARK: - POIVCDelegate
+extension NoteEditVC: POIVCDelegate{
+    func updatePOIName(_ poiName: String) {
+        //如果用户选择的是不选择位置，就为这个正向传值赋予一个空串
+        if poiName == kPOIsInitArr[0][0]{
+            self.poiName = ""
+            //重置原来的UI
+            poiNameIcon.tintColor = .label
+            poiNameLabel.text = "添加地点"
+            poiNameLabel.textColor = .label
         }else{
-           
-            showTextHUD("最多只能选择\(kMaxPhotoCount)张照片")
+            //数据
+            self.poiName = poiName
+            //UI
+            poiNameIcon.tintColor = blueColor
+            poiNameLabel.text = poiName
+            poiNameLabel.textColor = blueColor
         }
     }
 }
