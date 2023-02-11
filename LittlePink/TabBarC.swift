@@ -17,7 +17,6 @@ class TabBarC: UITabBarController,UITabBarControllerDelegate {
         
     }
     
-    
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
        
         if viewController is PostVC{
@@ -33,6 +32,7 @@ class TabBarC: UITabBarController,UITabBarControllerDelegate {
             config.startOnScreen = .library //一打开就展示相册
             config.screens = [.library, .photo , .video] //依次展示相册，拍视频，拍照页面
             config.maxCameraZoomFactor = 5 //最大多少倍变焦
+        
             
             // MARK: -业务逻辑分析.照片和视频不可混排,且在相册中多选的视频最后会帮我们合成一个视频(即最终只能有一个视频)
             //2.无论是相册照片还是现拍照片,之后在编辑页面皆可追加
@@ -53,30 +53,36 @@ class TabBarC: UITabBarController,UITabBarControllerDelegate {
             // MARK: - Gallery(多选完后的展示和编辑页面)-画廊
             config.gallery.hidesRemoveButton = false //每个照片或视频右上方是否有删除按钮
             
-            
             let picker = YPImagePicker(configuration: config)
             
             // MARK: 选完或按取消按钮后的异步回调处理（依据配置处理单个或多个）
             picker.didFinishPicking { [unowned picker] items, cancelled in
                 if cancelled{
-                    //                    print("用户按了左上角的取消按钮")
-                }
-                for item in items {
-                    switch item {
-                    case let .photo(photo):
-                        print(photo)
-                    case .video(let video):
-                        print(video)
+                    picker.dismiss(animated: true)
+                }else{
+                    var photos: [UIImage] = []
+                    var videoURL: URL?
+                    
+                    for item in items {
+                        switch item {
+                        case let .photo(photo):
+                            photos.append(photo.image)
+                        case .video:
+                            //从沙盒的tmp文件夹中找到原视频
+                            let url = URL(fileURLWithPath: "recordedVideoRAW.mov", relativeTo: FileManager.default.temporaryDirectory)
+                            //thumbnail 视频封面图
+                            photos.append(url.thumbnail)
+                            videoURL = url
+                        }
                     }
+                    // tabbar 弹出 noteedit
+                    let vc = self.storyboard!.instantiateViewController(identifier: kNoteEditVCID) as! NoteEditVC
+                    vc.photos = photos
+                    vc.videoURL = videoURL
+                    picker.pushViewController(vc, animated: true)
                 }
-                
-                picker.dismiss(animated: true)
             }
-            
             present(picker, animated: true)
-            
-            
-            
             return false
         }
         

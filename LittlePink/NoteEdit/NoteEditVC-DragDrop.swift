@@ -15,11 +15,10 @@ extension NoteEditVC: UICollectionViewDragDelegate{
         //可用indexpath判断某section或某item是否可拖动,若不可拖动则返回空数组
         
         let photo = photos[indexPath.item]
-        let dragItem = UIDragItem(itemProvider: NSItemProvider(object: photo!))
+        let dragItem = UIDragItem(itemProvider: NSItemProvider(object: photo))
         dragItem.localObject = photo //放下cell时，移动photos数组里的数据时需用到;在同一app内拖放时，localObject可以加快数据传递
         
         return [dragItem]
-        
     }
     //若一次拖动多个,需实现itemsForAddingTo方法
     //若要改变拖拽时cell外观,需实现dragPreviewParametersForItemAt方法

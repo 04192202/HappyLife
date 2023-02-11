@@ -4,88 +4,50 @@
 //
 //  Created by 郝义鹏 on 2023/1/30.
 //
-
 import UIKit
 import CHTCollectionViewWaterfallLayout
 import XLPagerTabStrip
 
-
 class WaterfallVC: UICollectionViewController {
     
     var channel = ""
+    var draftNotes: [DraftNote] = []
+    
+    var isMyDraft = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let layout = collectionView.collectionViewLayout as! CHTCollectionViewWaterfallLayout
+        config()
         
-        layout.columnCount = 2
-        layout.minimumColumnSpacing = kWaterfallPadding
-        layout.minimumInteritemSpacing = kWaterfallPadding
-        layout.sectionInset = UIEdgeInsets(top: 0, left: kWaterfallPadding, bottom: kWaterfallPadding, right: kWaterfallPadding)
-        
+        getDraftNotes()
         
     }
-
-    
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 13
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kWaterfallCellID, for: indexPath) as! WaterfallCell
-    
-        cell.imageview.image = UIImage(named: "\(indexPath.item + 1)")
-    
-        return cell
-    }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 
 }
 
 // MARK: - CHTCollectionViewDelegateWaterfallLayout
 extension WaterfallVC: CHTCollectionViewDelegateWaterfallLayout{
+    //存在的意义就是设定一个cell 的 size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        UIImage(named: "\(indexPath.item + 1)")!.size
+        //cell的宽度
+        let cellW = (screenRect.width - kWaterfallPadding * 3) / 2
+        //cell的高度
+        var cellH: CGFloat = 0
+        if isMyDraft{
+            let draftNote = draftNotes[indexPath.item]
+            //imageSize是图片实际大小
+            let imageSize = UIImage(draftNote.coverPhoto)?.size ?? imagePH.size
+            let imageH = imageSize.height
+            let imageW = imageSize.width
+            //用宽高比 * cell的宽度
+            let imageRatio = imageH / imageW
+            cellH = cellW * imageRatio + kDraftNoteWaterfallCellBottomViewH
+        }else{
+            cellH = UIImage(named: "\(indexPath.item + 1)")!.size.height
+        }
+        
+        return CGSize(width: cellW, height: cellH)
     }
 }
 

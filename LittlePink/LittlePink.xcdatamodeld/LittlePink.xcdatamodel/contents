@@ -3,10 +3,13 @@
     <entity name="DraftNote" representedClassName="DraftNote" syncable="YES" codeGenerationType="class">
         <attribute name="channel" attributeType="String" defaultValueString=""/>
         <attribute name="coverPhoto" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="isVideo" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="photos" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="poiName" attributeType="String" defaultValueString=""/>
         <attribute name="subChannel" attributeType="String" defaultValueString=""/>
         <attribute name="text" attributeType="String" defaultValueString=""/>
         <attribute name="title" attributeType="String" defaultValueString=""/>
-        <attribute name="updateAt" attributeType="Date" defaultDateTimeInterval="697516860" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="video" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
     </entity>
 </model>

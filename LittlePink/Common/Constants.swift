@@ -22,13 +22,32 @@ let kPhotoCellID = "PhotoCellID"
 let kPhotoFooterID = "PhotoFooterID"
 let kSubChannelCellID = "SubChannelCellID"
 let kPOICellID = "POICellID"
+let kDraftNoteWaterfallCellID = "DraftNoteWaterfallCellID"
+
+
 // MARK: - 资源文件相关
 let mainColor = UIColor(named: "main")!
 let blueColor = UIColor(named: "blue")!
+let imagePH = UIImage(named: "imagePH")!
+
+
+// MARK: - UI布局 屏幕宽度
+let screenRect = UIScreen.main.bounds
+
+// MARK: - CoreData
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//持久化容器
+let persistentContainer = appDelegate.persistentContainer
+//主队列
+let context = persistentContainer.viewContext
+//后台队列 （和主队列并发）
+let backgroundContext = persistentContainer.newBackgroundContext()
 
 // MARK: - 业务逻辑相关
-//瀑布流
+//瀑布流 cell 距离屏幕边框的距离 列与列之间的距离
 let kWaterfallPadding: CGFloat = 4
+//cell高
+let kDraftNoteWaterfallCellBottomViewH: CGFloat = 84
 
 let kChannels = ["推荐","旅行","娱乐","才艺","美妆","美女","美食","萌宠"]
 
@@ -48,7 +67,7 @@ let kAllSubChannels = [
     ["穿神马是神马", "就快瘦到50斤啦", "花5个小时修的靓图", "网红店入坑记"],
     ["魔都名媛会会长", "爬行西藏", "无边泳池只要9块9"],
     ["小鲜肉的魔幻剧", "国产动画雄起"],
-    ["练舞20年", "还在玩小提琴吗,我已经尤克里里了哦", "巴西柔术", "听说拳击能减肥", "乖乖交智商税吧"],
+    ["练舞20年", "还在玩小提琴吗,我已经尤克里里了", "巴西柔术", "听说拳击能减肥", "乖乖交智商税吧"],
     ["粉底没有最厚,只有更厚", "最近很火的法属xx岛的面霜"],
     ["我是白富美你是吗", "康一康瞧一瞧啦"],
     ["装x西餐厅", "网红店打卡"],

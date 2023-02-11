@@ -10,11 +10,9 @@ import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
         
         config()
         return true
@@ -49,14 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                  
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
+            
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
@@ -64,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }()
 
     // MARK: - Core Data Saving support
-
+    //主队列上的context存储
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -78,14 +69,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    //并发队列上的context存储
+    func saveBackgroundContext(){
+        //因可以有多个并发队列的context,故每次persistentContainer.viewContext时都会创建个新的,故不能像上面一样.
+        //这里需用使用同一个并发队列的context(即常量文件夹中引用的那个)
+        if backgroundContext.hasChanges{
+            do {
+                try backgroundContext.save()
+            } catch {
+                fatalError("后台存储数据失败(包括增删改):\(error)")
+            }
+        }
+    }
 
 }
+
 
 extension AppDelegate{
     private func config(){
         // sdk
         AMapServices.shared().enableHTTPS = true
-
         AMapServices.shared().apiKey = "56dfeef24a88408d90f67f8d8f00ef76"
+        //UI
+        UINavigationBar.appearance().tintColor = .label //设置所有的navigationItem的返回按钮颜色
     }
 }
+
