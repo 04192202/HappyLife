@@ -22,3 +22,5 @@
 #import <AMapSearchKit/AMapSearchKit.h>
 
 #import "MJRefresh.h"
+
+#import "JVERIFICATIONService.h"

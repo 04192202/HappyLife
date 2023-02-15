@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import LeanCloud
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -89,9 +90,21 @@ extension AppDelegate{
     private func config(){
         // sdk
         AMapServices.shared().enableHTTPS = true
-        AMapServices.shared().apiKey = "56dfeef24a88408d90f67f8d8f00ef76"
+        AMapServices.shared().apiKey = kAMapApiKey
         //UI
         UINavigationBar.appearance().tintColor = .label //设置所有的navigationItem的返回按钮颜色
+        
+        //初始化leanCloud
+        LCApplication.logLevel = .off
+        do {
+            try LCApplication.default.set(
+                id: kLCAppID,
+                key: kLCAppKey,
+                serverURL: kLCServerURL)
+        } catch {
+            print(error)
+        }
+         
     }
 }
 

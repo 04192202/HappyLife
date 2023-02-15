@@ -13,6 +13,35 @@ extension String{
     var isBlank: Bool{
         self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
+    
+    //判断字符串是否符合正则表达式kPhoneRegEx
+    var isPhoneNum : Bool{
+        Int(self) != nil && NSRegularExpression(kPhoneRegEx).matches(self)
+    }
+    
+    var isAuthCode: Bool{
+        Int(self) != nil && NSRegularExpression(kAuthCodeRegEx).matches(self)
+    }
+//随机的生成昵称
+    static func randomString(_ length:Int) -> String{
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+}
+
+
+extension NSRegularExpression {
+    convenience init(_ pattern: String) {
+        do {
+            try self.init(pattern: pattern)
+        } catch {
+            fatalError("非法的正则表达式")//因不能确保调用父类的init函数
+        }
+    }
+    func matches(_ string: String) -> Bool {
+        let range = NSRange(location: 0, length: string.utf16.count)
+        return firstMatch(in: string, options: [], range: range) != nil
+    }
 }
 
 extension Optional where Wrapped == String{
@@ -60,6 +89,18 @@ extension URL{
         } catch {
             return imagePH
         }
+    }
+}
+
+extension UIButton{
+    
+    func setToEnabled(){
+        isEnabled = true
+        backgroundColor = mainColor
+    }
+    func setToDisabled(){
+        isEnabled = false
+        backgroundColor = mainLightColor
     }
 }
 
@@ -136,6 +177,15 @@ extension UIViewController{
             viewToShow = UIApplication.shared.windows.last!
         }
         let hud = MBProgressHUD.showAdded(to: viewToShow, animated: true)
+        hud.mode = .text //不指定的话显示菊花和下面配置的文本
+        hud.label.text = title
+        hud.detailsLabel.text = subTitle
+        hud.hide(animated: true, afterDelay: 2)
+    }
+    
+    //用于在本vc调用,让他显示到别的vc(如父vc)里去
+    func showTextHUD(_ title: String, in view: UIView, _ subTitle: String? = nil){
+        let hud = MBProgressHUD.showAdded(to: view, animated: true)
         hud.mode = .text //不指定的话显示菊花和下面配置的文本
         hud.label.text = title
         hud.detailsLabel.text = subTitle

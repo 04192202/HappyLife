@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.6.4)
   - AMapFoundation (1.8.0)
   - AMapLocation (2.9.0):
     - AMapFoundation (>= 1.7.0)
@@ -6,23 +7,41 @@ PODS:
     - AMapFoundation (>= 1.8.0)
   - CHTCollectionViewWaterfallLayout/Swift (0.9.10)
   - DateToolsSwift (5.0.0)
+  - GRDB.swift (5.26.1):
+    - GRDB.swift/standard (= 5.26.1)
+  - GRDB.swift/standard (5.26.1)
+  - JCore (4.1.0)
+  - JVerification (2.9.4):
+    - JCore (>= 2.1.6)
   - KMPlaceholderTextView (1.4.0)
+  - LeanCloud (17.10.1):
+    - LeanCloud/RTM (= 17.10.1)
+  - LeanCloud/Foundation (17.10.1):
+    - Alamofire (~> 5.4)
+  - LeanCloud/RTM (17.10.1):
+    - GRDB.swift (~> 5.12)
+    - LeanCloud/Foundation (= 17.10.1)
+    - SwiftProtobuf (~> 1.18)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.5)
   - PryntTrimmerView (4.0.2)
   - SKPhotoBrowser (7.1.0)
   - SteviaLayout (4.7.3)
+  - SwiftProtobuf (1.20.3)
   - XLPagerTabStrip (9.0.0)
   - YPImagePicker (5.2.1):
     - PryntTrimmerView (= 4.0.2)
     - SteviaLayout (= 4.7.3)
 
 DEPENDENCIES:
+  - Alamofire
   - AMapLocation
   - AMapSearch
   - CHTCollectionViewWaterfallLayout/Swift
   - DateToolsSwift
+  - JVerification
   - KMPlaceholderTextView (~> 1.4.0)
+  - LeanCloud
   - MBProgressHUD (~> 1.2.0)
   - MJRefresh
   - SKPhotoBrowser
@@ -31,35 +50,47 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - AMapFoundation
     - AMapLocation
     - AMapSearch
     - CHTCollectionViewWaterfallLayout
     - DateToolsSwift
+    - GRDB.swift
+    - JCore
+    - JVerification
     - KMPlaceholderTextView
+    - LeanCloud
     - MBProgressHUD
     - MJRefresh
     - PryntTrimmerView
     - SKPhotoBrowser
     - SteviaLayout
+    - SwiftProtobuf
     - XLPagerTabStrip
     - YPImagePicker
 
 SPEC CHECKSUMS:
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   AMapFoundation: f48153f724114b58da9b01875ab88a1f6856e3db
   AMapLocation: f5eb11e11c62f0f599f80b578eec8a1f70deb985
   AMapSearch: e0c81206b8ac1d27ef349095a96ea6398e3a0da3
   CHTCollectionViewWaterfallLayout: b989a459788d7657ac010e03bc0f7eedca95a420
   DateToolsSwift: 4207ada6ad615d8dc076323d27037c94916dbfa6
+  GRDB.swift: e98cd55ec99dea5da99355d588149063e4cfa0eb
+  JCore: ea26a5dde38ebf6e4e85b772d4ecce8e0e95fb55
+  JVerification: 6012af73d44e2cf122fd738a74f2731190bed5b7
   KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
+  LeanCloud: e6de4b8129ab68be7f70a9b77c4304f71c5a1a2c
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   SKPhotoBrowser: cd95b95a6f352fc2a50992721299f75ead77f9ab
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
+  SwiftProtobuf: b02b5075dcf60c9f5f403000b3b0c202a11b6ae1
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
   YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: 2ea4c843ea0d0808a6a693533bbbef7e78016a95
+PODFILE CHECKSUM: b4aec0455413a58a2ef3d19cbf3ebbe5d670be9b
 
 COCOAPODS: 1.11.3

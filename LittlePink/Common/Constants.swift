@@ -15,7 +15,7 @@ let kDiscoverVCID = "DiscoverVCID"
 let kWaterfallVCID = "WaterfallVCID"
 let kNoteEditVCID = "NoteEditVCID"
 let kChannelTableVCID = "ChannelTableVCID"
-
+let kLoginNaviID = "LoginNaviID"
 // MARK: Cell相关ID
 let kWaterfallCellID = "WaterfallCellID"
 let kPhotoCellID = "PhotoCellID"
@@ -29,7 +29,7 @@ let kDraftNoteWaterfallCellID = "DraftNoteWaterfallCellID"
 let mainColor = UIColor(named: "main")!
 let blueColor = UIColor(named: "blue")!
 let imagePH = UIImage(named: "imagePH")!
-
+let mainLightColor = UIColor(named: "main-light")!
 
 // MARK: - UI布局 屏幕宽度
 let screenRect = UIScreen.main.bounds
@@ -75,9 +75,35 @@ let kAllSubChannels = [
 ]
 
 //高德
+let kAMapApiKey = "56dfeef24a88408d90f67f8d8f00ef76"
 let kNoPOIPH = "未知地点"
 let kPOITypes = "医疗保健服务" //调试用
 //let kPOITypes = "汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施"
 let kPOIsInitArr = [["不显示位置", ""]]
 //POI信息一次只展示20个
 let kPOIsOffset = 20
+
+//极光
+
+let kJAppKey = "d2b5897eeb5a95eb94be4d84"
+
+
+// 应用跳转
+let kAppScheme = "LittlePink"
+
+
+
+//正则表达式
+let kPhoneRegEx = "^1\\d{10}$"
+let kAuthCodeRegEx = "^\\d{6}$"
+
+// MARK: - Leancloud
+//LeanCloud
+let kLCAppID = "JbN1mr46g3dX3GcLuxtPKVCQ-gzGzoHsz"
+let kLCAppKey = "vwOoF8sTtznYICQ10zR2UCXo"
+let kLCServerURL = "https://jbn1mr46.lc-cn-n1-shared.com"
+//user表
+let kNickNameCol = "nickName"
+let kAvatarCol = "avatar"
+let kGenderCol = "gender"
+let kIntroCol = "intro"
