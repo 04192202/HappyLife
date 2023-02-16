@@ -16,7 +16,7 @@ import UIKit
         btn.setTitleColor(.white, for: .normal)
         btn.backgroundColor = mainColor
         btn.layer.cornerRadius = 22
-        btn.addTarget(self, action: #selector(localLogin), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(login), for: .touchUpInside)
         btn.translatesAutoresizingMaskIntoConstraints = false
         return btn
     }()
@@ -37,4 +37,11 @@ import UIKit
         loginBtn.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
     }
     
+     @objc private func login(){
+         #if targetEnvironment(simulator)
+         presentCodeLoginVC()
+         #else
+         localLogin()
+         #endif
+     }
 }

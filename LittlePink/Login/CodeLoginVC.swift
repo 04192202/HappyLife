@@ -95,14 +95,14 @@ class CodeLoginVC: UIViewController {
             }
         }
     }
-    //15525826658 961031
+    //   测试： 15525826658 961031
     @IBAction func login(_ sender: UIButton) {
         
         view.endEditing(true)
         
         showLoadHUD()
         LCUser.signUpOrLogIn(mobilePhoneNumber: phoneNumStr, verificationCode: authCodeStr){ result in
-            self.hideLoadHUD()
+           
             switch result {
            case let.success(object: user):
                 // 放入随机昵称
@@ -110,6 +110,7 @@ class CodeLoginVC: UIViewController {
                 self.configAfterLogin(user, randomNickName)
                 
             case let.failure(error: error):
+                self.hideLoadHUD()
                 DispatchQueue.main.async {
                     self.showTextHUD("登录失败",true,error.reason)
                 }

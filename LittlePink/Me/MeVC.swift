@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import LeanCloud
+
 
 class MeVC: UIViewController {
 
@@ -17,6 +19,20 @@ class MeVC: UIViewController {
         navigationItem.backButtonDisplayMode = .minimal
     }
 
+    
+    @IBAction func logouttest(_ sender: Any) {
+
+        LCUser.logOut()
+        
+        
+        let loginVC = storyboard!.instantiateViewController(identifier: kLoginVCID)
+
+        loginAndMeParentVC.removeChildren()
+
+        loginAndMeParentVC.add(child: loginVC)
+        
+    }
+    
 }
 
 

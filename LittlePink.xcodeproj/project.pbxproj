@@ -45,6 +45,7 @@
 		9DB0A12A299BD9FA00B1FB74 /* PasswordLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB0A129299BD9FA00B1FB74 /* PasswordLoginVC.swift */; };
 		9DB0A12C299CDF5E00B1FB74 /* LC-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB0A12B299CDF5E00B1FB74 /* LC-Extensions.swift */; };
 		9DB0A12E299CE49000B1FB74 /* Login-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB0A12D299CE49000B1FB74 /* Login-Extensions.swift */; };
+		9DB0A130299CECC200B1FB74 /* LoginAndMeParentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB0A12F299CECC200B1FB74 /* LoginAndMeParentVC.swift */; };
 		9DB70316298CC83500D5AB95 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DB70315298CC83500D5AB95 /* Protocols.swift */; };
 		9DD039F02988144800E827C0 /* WaterfallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD039EF2988144800E827C0 /* WaterfallVC.swift */; };
 		9DD039F2298817F800E827C0 /* WaterfallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DD039F1298817F800E827C0 /* WaterfallCell.swift */; };
@@ -103,6 +104,7 @@
 		9DB0A129299BD9FA00B1FB74 /* PasswordLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordLoginVC.swift; sourceTree = "<group>"; };
 		9DB0A12B299CDF5E00B1FB74 /* LC-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LC-Extensions.swift"; sourceTree = "<group>"; };
 		9DB0A12D299CE49000B1FB74 /* Login-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login-Extensions.swift"; sourceTree = "<group>"; };
+		9DB0A12F299CECC200B1FB74 /* LoginAndMeParentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAndMeParentVC.swift; sourceTree = "<group>"; };
 		9DB70315298CC83500D5AB95 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		9DBB53CA2988E95400396B6D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		9DBB53CB2988E95400396B6D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -169,7 +171,7 @@
 				9D066E762967D76E00536573 /* AppDelegate.swift */,
 				9D066E782967D76E00536573 /* SceneDelegate.swift */,
 				9DD03A032988B7E100E827C0 /* TabBarC.swift */,
-				9DB0A1192994FF4000B1FB74 /* MeVC.swift */,
+				9DB0A131299CECEB00B1FB74 /* Me */,
 				9D066E7C2967D76E00536573 /* Main.storyboard */,
 				9DB0A11B2998CBFE00B1FB74 /* Login */,
 				9DE8934A29897220008E743E /* NoteEdit */,
@@ -218,6 +220,15 @@
 				9DB0A12B299CDF5E00B1FB74 /* LC-Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9DB0A131299CECEB00B1FB74 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				9DB0A12F299CECC200B1FB74 /* LoginAndMeParentVC.swift */,
+				9DB0A1192994FF4000B1FB74 /* MeVC.swift */,
+			);
+			path = Me;
 			sourceTree = "<group>";
 		};
 		9DD039EC2988043600E827C0 /* Common */ = {
@@ -415,6 +426,7 @@
 				9DB0A128299BD9CE00B1FB74 /* CodeLoginVC.swift in Sources */,
 				9D066E95297F7A4B00536573 /* NearByVC.swift in Sources */,
 				9DE8934729892B22008E743E /* PhotoCell.swift in Sources */,
+				9DB0A130299CECC200B1FB74 /* LoginAndMeParentVC.swift in Sources */,
 				9DD039F02988144800E827C0 /* WaterfallVC.swift in Sources */,
 				9DD039F2298817F800E827C0 /* WaterfallCell.swift in Sources */,
 				9D4963A72991F89E00138FDF /* POIVC-KeywordsSearch.swift in Sources */,

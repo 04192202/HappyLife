@@ -18,7 +18,7 @@ import Alamofire
 //VTelecomUIConfig 类，电信登录界面 UI 配置类，JVUIConfig 的子类
 extension UIViewController{
         
-    @objc func localLogin(){
+     func localLogin(){
             
             showLoadHUD()
             let config = JVAuthConfig()

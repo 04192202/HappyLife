@@ -9,16 +9,19 @@ import Foundation
 import LeanCloud
 
 extension LCFile{
-    func save(to tabel:LCObject, as record: String){
+    func save(to tabel:LCObject, as record: String , group :DispatchGroup? = nil){
+        group?.enter()
         //保存头像
         self.save{ result in
             switch result{
+                
             case .success:
                 if let value = self.objectId?.value{
                     print("文件保存完成 objectID:\(value)")
                     
                     do {
                         try tabel.set(record, value: self)
+                        group?.enter()
                         tabel.save { (result) in
                             switch result {
                             case .success:
@@ -26,6 +29,7 @@ extension LCFile{
                             case .failure(error: let error):
                                 print("保存文件进云端失败:\(error)")
                             }
+                            group?.leave()
                         }
                     } catch {
                         print("给字段赋值失败/重复赋值\(error)")
@@ -35,6 +39,7 @@ extension LCFile{
                 //保存失败
                 print("保存文件进云端失败:\(error)")
             }
+            group?.leave()
         }
     }
 }

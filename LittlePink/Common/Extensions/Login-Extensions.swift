@@ -11,14 +11,18 @@ import LeanCloud
 extension UIViewController{
     func configAfterLogin(_ user:LCUser,_ nickName:String){
         if let _ = user.get(kNickNameCol){
-        }else{
-            //首次登陆，放入随机头像
+            
+            dismissAndShowMeVC()
+            
+        }else{//首次登陆，放入随机头像
+            let group = DispatchGroup()
+            
             let randomAvatar = UIImage(named: "PH\(Int.random(in: 1...4))")!
             if let avatarData = randomAvatar.pngData(){
                 let avatarFile = LCFile(payload: .data(data: avatarData))
                 avatarFile.mimeType = "image/jpeg"
                 
-                avatarFile.save(to: user, as: kAvatarCol)
+                avatarFile.save(to: user, as: kAvatarCol, group: group)
             }
                 //判断用户是否是首次登录
             do {
@@ -27,10 +31,28 @@ extension UIViewController{
                 print("给字段赋值失败/重复赋值\(error)")
                 return
             }
-                user.save{(result)in
-                    if case .success = result{
-                }
+            group.enter()
+                user.save{ _ in
+                    group.leave()
+            }
+            group.notify(queue: .main){
+                self.dismissAndShowMeVC()
             }
         }
+    }
+    
+    func dismissAndShowMeVC(){
+        hideLoadHUD()
+        DispatchQueue.main.async {
+            //找到sb
+
+            let mainSB = UIStoryboard(name: "Main", bundle: nil)
+            let meVC = mainSB.instantiateViewController(identifier: kMeVCID)
+            loginAndMeParentVC.removeChildren()
+            loginAndMeParentVC.add(child: meVC)
+
+            self.dismiss(animated: true)
+        }
+
     }
 }

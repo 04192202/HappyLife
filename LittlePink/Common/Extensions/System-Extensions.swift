@@ -203,6 +203,26 @@ extension UIViewController{
     @objc func dismissKeyboard(){
         view.endEditing(true) //让view中的所有textfield失去焦点--即关闭小键盘
     }
+    //子视图控制器固定三步走
+    func add(child vc: UIViewController){
+        addChild(vc)
+        vc.view.frame = view.bounds //若vc是代码创建的需加这句(后面的view即为某个containerview),若都是sb上创建的可不加.建议加
+        view.addSubview(vc.view)
+        vc.didMove(toParent: self)
+    }
+    func remove(child vc: UIViewController){
+        vc.willMove(toParent: nil)
+        vc.view.removeFromSuperview()
+        vc.removeFromParent()
+    }
+    func removeChildren(){
+        if !children.isEmpty{
+            for vc in children{
+                remove(child: vc)
+            }
+        }
+    }
+    
 }
 
 extension Bundle{
