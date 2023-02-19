@@ -25,7 +25,7 @@ extension WaterfallVC{
                 vc.videoURL = videoURL
                 //闭包传值 NoteEditeVC
                 vc.updateDraftNoteFinished = { self.getDraftNotes() }
-                
+                vc.postDraftNoteFinished = {self.getDraftNotes() }
                 navigationController?.pushViewController(vc, animated: true)
                 
             }else{
@@ -34,7 +34,23 @@ extension WaterfallVC{
             
             
         }else{
+            //依赖注入
+            let detailVC = storyboard!.instantiateViewController(identifier: kNoteDetailVCID){coder in
+                NoteDetailVC(coder: coder , note : self.notes[indexPath.item])
+            }
+            if let cell = collectionView.cellForItem(at: indexPath) as? WaterfallCell{
+                detailVC.isLikeFromWaterfallCell = cell.isLike
+            }
             
+            detailVC.delNoteFinished = {
+                self.notes.remove(at: indexPath.item)
+                collectionView.performBatchUpdates{
+                    collectionView.deleteItems(at: [indexPath])
+                }
+            }
+            
+            detailVC.modalPresentationStyle = .fullScreen
+            present(detailVC, animated: true)
         }
     }
 }

@@ -16,9 +16,10 @@ let kWaterfallVCID = "WaterfallVCID"
 let kNoteEditVCID = "NoteEditVCID"
 let kChannelTableVCID = "ChannelTableVCID"
 let kLoginNaviID = "LoginNaviID"
-let kLoginVCID = "loginVCID"
-let kMeVCID = "meVCID"
-
+let kLoginVCID = "LoginVCID"
+let kMeVCID = "MeVCID"
+let kDraftNotesNaviID = "DraftNotesNaviID"
+let kNoteDetailVCID = "NoteDetailVCID"
 
 // MARK: Cell相关ID
 let kWaterfallCellID = "WaterfallCellID"
@@ -51,7 +52,8 @@ let backgroundContext = persistentContainer.newBackgroundContext()
 //瀑布流 cell 距离屏幕边框的距离 列与列之间的距离
 let kWaterfallPadding: CGFloat = 4
 //cell高
-let kDraftNoteWaterfallCellBottomViewH: CGFloat = 84
+let kDraftNoteWaterfallCellBottomViewH: CGFloat = 68
+let kWaterfallCellBottomViewH:CGFloat = 64
 
 let kChannels = ["推荐","旅行","娱乐","才艺","美妆","美女","美食","萌宠"]
 
@@ -81,7 +83,7 @@ let kAllSubChannels = [
 //高德
 let kAMapApiKey = "56dfeef24a88408d90f67f8d8f00ef76"
 let kNoPOIPH = "未知地点"
-let kPOITypes = "医疗保健服务" //调试用
+let kPOITypes = "风景名胜" //调试用
 //let kPOITypes = "汽车服务|汽车销售|汽车维修|摩托车服务|餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务|风景名胜|商务住宅|政府机构及社会团体|科教文化服务|交通设施服务|金融保险服务|公司企业|道路附属设施|地名地址信息|公共设施"
 let kPOIsInitArr = [["不显示位置", ""]]
 //POI信息一次只展示20个
@@ -101,13 +103,70 @@ let kAppScheme = "LittlePink"
 let kPhoneRegEx = "^1\\d{10}$"
 let kAuthCodeRegEx = "^\\d{6}$"
 
+//云端
+let kNotesOffset = 10
+
 // MARK: - Leancloud
 //LeanCloud
 let kLCAppID = "JbN1mr46g3dX3GcLuxtPKVCQ-gzGzoHsz"
 let kLCAppKey = "vwOoF8sTtznYICQ10zR2UCXo"
 let kLCServerURL = "https://jbn1mr46.lc-cn-n1-shared.com"
+
+
+//通用字段
+let kCreatedAtCol = "createdAt"
+let kUpdatedAtCol = "updatedAt"
+
+
+//表
+let kNoteTable = "Note"
+let kUserLikeTable = "UserLike"
+let kUserFavTable = "UserFav"
+let kCommentTable = "Comment"
+let kReplyTable = "Reply"
+let kUserInfoTable = "UserInfo"
+
 //user表
 let kNickNameCol = "nickName"
 let kAvatarCol = "avatar"
 let kGenderCol = "gender"
 let kIntroCol = "intro"
+
+//Note表
+let kCoverPhotoCol = "coverPhoto"
+let kCoverPhotoRatioCol = "coverPhotoRatio"
+let kPhotosCol = "photos"
+let kVideoCol = "video"
+let kTitleCol = "title"
+let kTextCol = "text"
+let kChannelCol = "channel"
+let kSubChannelCol = "subChannel"
+let kPOINameCol = "poiName"
+let kIsVideoCol = "isVideo"
+let kLikeCountCol = "likeCount"
+let kFavCountCol = "favCount"
+let kCommentCountCol = "commentCount"
+let kAuthorCol = "author"
+let kHasEditCol = "hasEdit"
+
+
+//UserLike表
+let kUserCol = "user"
+let kNoteCol = "note"
+
+// MARK: - 全局函数
+
+func largeIcon(_ iconName:String , with color: UIColor = .label)-> UIImage {
+    let config = UIImage.SymbolConfiguration(scale: .large)
+    let icon = UIImage(systemName: iconName,withConfiguration: config)!
+    
+    return icon.withTintColor(color)
+}
+
+func showGlobalTextHUD(_ title: String){
+    let window = UIApplication.shared.windows.last!
+    let hud = MBProgressHUD.showAdded(to: window, animated: true)
+    hud.mode = .text //不指定的话显示菊花和配置的文本
+    hud.label.text = title
+    hud.hide(animated: true, afterDelay: 2)
+}

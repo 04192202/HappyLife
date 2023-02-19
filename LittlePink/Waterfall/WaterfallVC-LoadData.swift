@@ -6,7 +6,8 @@
 //
 
 import CoreData
-
+import LeanCloud
+//云端加载数据
 extension WaterfallVC{
     func getDraftNotes(){
 
@@ -41,6 +42,23 @@ extension WaterfallVC{
                 }
             }
             self.hideLoadHUD()
+        }
+    }
+    
+    func getNotes(){
+        let query = LCQuery(className: kNoteTable)
+        
+        query.whereKey(kChannelCol, .equalTo(channel))//条件查询
+        query.whereKey(kAuthorCol, .included)//同时查询出作者对象
+        query.whereKey(kUpdatedAtCol, .descending)//排序 - 降序
+        query.limit = kNotesOffset//上拉加载的分页
+        
+        query.find { result in
+            if case let .success(objects: notes) = result{
+                self.notes = notes
+                self.collectionView.reloadData()
+            }
+            
         }
     }
 }

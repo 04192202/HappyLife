@@ -33,6 +33,15 @@ class MeVC: UIViewController {
         
     }
     
+    
+    @IBAction func showDraftNotes(_ sender: Any) {
+        
+        let navi = storyboard!.instantiateViewController(identifier: kDraftNotesNaviID)
+        navi.modalPresentationStyle = .fullScreen
+        present(navi, animated: true)
+    }
+    
+    
 }
 
 

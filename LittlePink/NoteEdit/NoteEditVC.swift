@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LeanCloud
 
 
 class NoteEditVC: UIViewController {
@@ -13,8 +14,13 @@ class NoteEditVC: UIViewController {
     var draftNote: DraftNote?
     //闭包再重新编辑草稿后传入到本地
     var updateDraftNoteFinished: (() -> ())?
+    var postDraftNoteFinished: (() -> ())?
     
-    var photos = [UIImage(named: "1")!, UIImage(named: "2")!]
+    var note: LCObject?
+    var updateNoteFinished: ((String) -> ())?
+    
+    
+    var photos: [UIImage] = []
     
     //var videoURL: URL? = Bundle.main.url(forResource: "TV", withExtension: "mp4")
     var videoURL: URL?
@@ -65,13 +71,22 @@ class NoteEditVC: UIViewController {
         if let draftNote = draftNote{
             updateDraftNote(draftNote)
         }else{
+            
             createDraftNote()
         }
     }
         
-    
+    //把数据存到云端
     @IBAction func postNote(_ sender: Any) {
         guard isValidateNote() else { return }
+        
+        if let draftNote = draftNote{//发布草稿笔记
+            postDraftNote(draftNote)
+        }else if  let note = note {//更新笔记
+            updateNote(note)
+        }else{//发布新笔记
+            createNote()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

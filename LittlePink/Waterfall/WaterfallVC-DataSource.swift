@@ -6,15 +6,16 @@
 //
 
 import Foundation
+//数量配置
 extension WaterfallVC{
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isMyDraft{
             return draftNotes.count
         }else{
-            return 13
+            return notes.count
         }
     }
-
+//数据配置
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if isMyDraft{
@@ -26,7 +27,8 @@ extension WaterfallVC{
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kWaterfallCellID, for: indexPath) as! WaterfallCell
-            cell.imageview.image = UIImage(named: "\(indexPath.item + 1)")
+            
+            cell.note = notes[indexPath.item]
             return cell
         }
     }

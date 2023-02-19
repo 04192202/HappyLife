@@ -19,6 +19,13 @@ target 'LittlePink' do
   pod 'JVerification'
   pod 'Alamofire'
   pod 'LeanCloud'
+  pod 'PopupDialog', '~> 1.1'
+  pod 'FaveButton'
+  pod 'ImageSlideshow', '~> 1.9.0'
+  pod 'Kingfisher', '~> 7.0'
+  pod "ImageSlideshow/Kingfisher"
+  pod 'GrowingTextView', '0.7.2'
+  
 end
 post_install do |installer|
   installer.pods_project.build_configurations.each do |config|

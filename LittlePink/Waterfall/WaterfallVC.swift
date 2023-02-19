@@ -7,23 +7,32 @@
 import UIKit
 import CHTCollectionViewWaterfallLayout
 import XLPagerTabStrip
+import LeanCloud
 
 class WaterfallVC: UICollectionViewController {
     
     var channel = ""
+    //草稿相关数据
+    var isMyDraft = false
     var draftNotes: [DraftNote] = []
-    
-    var isMyDraft = true
+    //首页相关数据
+    var notes: [LCObject] = []
+  
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         config()
-        
+        getNotes()
         getDraftNotes()
         
     }
 
+    
+    @IBAction func dismissDraftNotesVC(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
 }
 
 // MARK: - CHTCollectionViewDelegateWaterfallLayout
@@ -44,7 +53,9 @@ extension WaterfallVC: CHTCollectionViewDelegateWaterfallLayout{
             let imageRatio = imageH / imageW
             cellH = cellW * imageRatio + kDraftNoteWaterfallCellBottomViewH
         }else{
-            cellH = UIImage(named: "\(indexPath.item + 1)")!.size.height
+            let note = notes[indexPath.item]
+            let coverPhotoRatio = CGFloat(note.getExactDoubelVal(kCoverPhotoRatioCol))
+            cellH = cellW * coverPhotoRatio + kWaterfallCellBottomViewH
         }
         
         return CGSize(width: cellW, height: cellH)
