@@ -28,6 +28,9 @@ let kPhotoFooterID = "PhotoFooterID"
 let kSubChannelCellID = "SubChannelCellID"
 let kPOICellID = "POICellID"
 let kDraftNoteWaterfallCellID = "DraftNoteWaterfallCellID"
+let kCommentViewID = "CommentViewID"
+let kReplyCellID = "ReplyCellID"
+let kCommentSectionFooterViewID = "CommentSectionFooterViewID"
 
 
 // MARK: - 资源文件相关
@@ -66,7 +69,7 @@ let kSpacingBetweenItems: CGFloat = 2
 //笔记
 let kMaxNoteTitleCount = 20
 let kMaxNoteTextCount = 800
-
+let kNoteCommentPH = "精彩评论将被优先展示..."
 
 //话题
 let kAllSubChannels = [
@@ -105,6 +108,7 @@ let kAuthCodeRegEx = "^\\d{6}$"
 
 //云端
 let kNotesOffset = 10
+let kCommentsOffset = 10
 
 // MARK: - Leancloud
 //LeanCloud
@@ -149,10 +153,19 @@ let kCommentCountCol = "commentCount"
 let kAuthorCol = "author"
 let kHasEditCol = "hasEdit"
 
-
 //UserLike表
 let kUserCol = "user"
 let kNoteCol = "note"
+
+//Comment表
+let kHasReplyCol = "hasReply"
+
+//Reply表
+let kCommentCol = "comment"
+let kReplyToUserCol = "replyToUser"
+
+//UserInfo表
+let kUserObjectIdCol = "userObjectId"
 
 // MARK: - 全局函数
 

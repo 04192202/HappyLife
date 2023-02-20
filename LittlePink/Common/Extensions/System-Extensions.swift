@@ -47,8 +47,27 @@ extension String{
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String((0..<length).map{ _ in letters.randomElement()! })
     }
+    
+    //拼接富文本
+    func spliceAttrStr(_ dateStr: String) -> NSMutableAttributedString{
+        let attrText = toAttrStr()
+        let attrDate = " \(dateStr)".toAttrStr(12, .secondaryLabel)
+        
+        attrText.append(attrDate)
+        
+        return attrText
+    }
+    //普通字符串转化为富文本
+    func toAttrStr(_ fontSize: CGFloat = 14, _ color: UIColor = .label) -> NSMutableAttributedString{
+        let attr: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: fontSize),
+            .foregroundColor: color
+        ]
+        return NSMutableAttributedString(string: self, attributes: attr)
+    }
+    
+    
 }
-
 
 extension NSRegularExpression {
     convenience init(_ pattern: String) {
@@ -152,15 +171,13 @@ extension UIImage{
 
 extension UITextField{
     var unwrappedText: String { text ?? "" }
-    var exactText: String {
-        unwrappedText.isBlank ? "" : unwrappedText
-    }
+    var exactText: String { unwrappedText.isBlank ? "" : unwrappedText }
+    var isBlank : Bool { unwrappedText.isBlank }
 }
 extension UITextView{
     var unwrappedText: String { text ?? "" }
-    var exactText: String {
-        unwrappedText.isBlank ? "" : unwrappedText
-    }
+    var exactText: String { unwrappedText.isBlank ? "" : unwrappedText }
+    var isBlank : Bool { unwrappedText.isBlank }
 }
 
 extension UIView{
@@ -170,10 +187,26 @@ extension UIView{
             layer.cornerRadius
         }
         set{
+            clipsToBounds = true
             layer.cornerRadius = newValue
         }
     }
 }
+////改变UIAlertAction里的字体颜色 keyvalue coding (kvc)改提示框的UI oc
+extension UIAlertAction{
+    func setTitleColor(_ color: UIColor){
+        setValue(color, forKey: "titleTextColor")
+    }
+    var titleTextColor: UIColor? {
+        get {
+            value(forKey: "titleTextColor") as? UIColor
+        }
+        set {
+            setValue(newValue, forKey: "titleTextColor")
+        }
+    }
+}
+
 
 extension UIViewController{
     

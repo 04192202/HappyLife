@@ -1543,7 +1543,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="U5T-Zl-EBX">
                                                 <rect key="frame" x="0.0" y="0.0" width="169" height="32"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNY-cP-lGd">
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNY-cP-lGd">
                                                         <rect key="frame" x="0.0" y="0.0" width="39.666666666666664" height="32"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="8" maxY="0.0"/>
@@ -1726,6 +1726,7 @@
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTu-Tm-bQh" customClass="BigButton" customModule="LittlePink" customModuleProvider="target">
                                                             <rect key="frame" x="46" y="0.0" width="297" height="36"/>
+                                                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" title="想勾搭，先评论..."/>
                                                             <userDefinedRuntimeAttributes>
@@ -1733,6 +1734,9 @@
                                                                     <real key="value" value="18"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="comment:" destination="V93-S5-Y4L" eventType="touchUpInside" id="x42-x4-BRL"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -1755,7 +1759,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="uwC-H7-7Tg">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReplyCellID" id="uwC-H7-7Tg">
                                         <rect key="frame" x="0.0" y="497" width="375" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uwC-H7-7Tg" id="cu2-gv-fzF">
@@ -1764,6 +1768,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="V93-S5-Y4L" id="Yni-Vy-DYA"/>
+                                    <outlet property="delegate" destination="V93-S5-Y4L" id="vKs-Wo-Sl1"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqD-6M-xlA">
                                 <rect key="frame" x="0.0" y="733" width="375" height="45"/>
@@ -1792,6 +1800,9 @@
                                                         <real key="value" value="18"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="comment:" destination="V93-S5-Y4L" eventType="touchUpInside" id="mWs-hC-OIU"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UOl-1p-8V4">
                                                 <rect key="frame" x="133" y="0.0" width="71" height="36"/>
@@ -1855,7 +1866,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="63" id="wnp-2w-zVf"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQS-0p-sFk">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQS-0p-sFk">
                                                 <rect key="frame" x="288.66666666666669" y="0.0" width="54.333333333333314" height="36"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
@@ -1865,6 +1876,9 @@
                                                     <imageReference key="image" image="ellipsis.message.fill" catalog="system" symbolScale="medium"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="21"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="comment:" destination="V93-S5-Y4L" eventType="touchUpInside" id="k9J-Kt-vQv"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1880,16 +1894,19 @@
                                     <constraint firstItem="oBJ-ws-nck" firstAttribute="top" secondItem="bqD-6M-xlA" secondAttribute="top" id="tum-93-Tet"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VLc-zR-KOn">
-                                <rect key="frame" x="0.0" y="722" width="375" height="56"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewr-d5-QG6">
+                                <rect key="frame" x="0.0" y="756" width="375" height="56"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7n5-9y-VA7" customClass="GrowingTextView" customModule="GrowingTextView">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lAY-A6-GaC" customClass="GrowingTextView" customModule="GrowingTextView">
                                         <rect key="frame" x="16" y="8" width="272" height="40"/>
                                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                         <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
                                                 <integer key="value" value="200"/>
                                             </userDefinedRuntimeAttribute>
@@ -1899,17 +1916,13 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="maxHeight">
                                                 <real key="value" value="90"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="精彩评论将会被优先展示..."/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="radius">
-                                                <real key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Etx-h1-QVb">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZi-rJ-wrZ">
                                         <rect key="frame" x="296" y="8" width="63" height="40"/>
                                         <color key="backgroundColor" name="main"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="RKH-DS-2m4"/>
+                                            <constraint firstAttribute="height" constant="40" id="1Gm-Jq-oAd"/>
                                         </constraints>
                                         <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1921,16 +1934,20 @@
                                                 <real key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="postCommentOrReply:" destination="V93-S5-Y4L" eventType="touchUpInside" id="1w3-na-wBk"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Etx-h1-QVb" secondAttribute="trailing" constant="16" id="5nr-LQ-7TV"/>
-                                    <constraint firstItem="Etx-h1-QVb" firstAttribute="centerY" secondItem="VLc-zR-KOn" secondAttribute="centerY" id="8uv-lb-hKx"/>
-                                    <constraint firstItem="7n5-9y-VA7" firstAttribute="leading" secondItem="VLc-zR-KOn" secondAttribute="leading" constant="16" id="A1r-f0-sy1"/>
-                                    <constraint firstAttribute="bottom" secondItem="7n5-9y-VA7" secondAttribute="bottom" constant="8" id="DTk-s9-R5A"/>
-                                    <constraint firstItem="7n5-9y-VA7" firstAttribute="top" secondItem="VLc-zR-KOn" secondAttribute="top" constant="8" id="MPo-7t-ZCf"/>
-                                    <constraint firstItem="Etx-h1-QVb" firstAttribute="leading" secondItem="7n5-9y-VA7" secondAttribute="trailing" constant="8" id="yOP-MM-bjd"/>
+                                    <constraint firstItem="AZi-rJ-wrZ" firstAttribute="top" secondItem="ewr-d5-QG6" secondAttribute="top" constant="8" id="IqR-im-Lsd"/>
+                                    <constraint firstAttribute="trailing" secondItem="AZi-rJ-wrZ" secondAttribute="trailing" constant="16" id="P2K-QX-qnc"/>
+                                    <constraint firstAttribute="bottom" secondItem="AZi-rJ-wrZ" secondAttribute="bottom" constant="8" id="R7d-nt-4NK"/>
+                                    <constraint firstItem="AZi-rJ-wrZ" firstAttribute="leading" secondItem="lAY-A6-GaC" secondAttribute="trailing" constant="8" id="RZp-qU-iBQ"/>
+                                    <constraint firstItem="lAY-A6-GaC" firstAttribute="leading" secondItem="ewr-d5-QG6" secondAttribute="leading" constant="16" id="fTf-jb-zvN"/>
+                                    <constraint firstItem="lAY-A6-GaC" firstAttribute="top" secondItem="ewr-d5-QG6" secondAttribute="top" constant="8" id="lYb-ck-Wi3"/>
+                                    <constraint firstAttribute="bottom" secondItem="lAY-A6-GaC" secondAttribute="bottom" constant="8" id="nsS-0D-I2U"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1939,20 +1956,17 @@
                         <constraints>
                             <constraint firstItem="bqD-6M-xlA" firstAttribute="bottom" secondItem="KQT-XO-meb" secondAttribute="bottom" id="0DJ-Vq-Fmo"/>
                             <constraint firstItem="mnD-x0-Uk8" firstAttribute="top" secondItem="KQT-XO-meb" secondAttribute="top" id="2c8-m2-74j"/>
-                            <constraint firstItem="bqD-6M-xlA" firstAttribute="trailing" secondItem="KQT-XO-meb" secondAttribute="trailing" id="353-UY-42T"/>
+                            <constraint firstItem="ewr-d5-QG6" firstAttribute="trailing" secondItem="KQT-XO-meb" secondAttribute="trailing" id="3X6-b2-pe8"/>
                             <constraint firstItem="KQT-XO-meb" firstAttribute="trailing" secondItem="nbw-dJ-hqm" secondAttribute="trailing" id="7WS-Uy-Yq5"/>
                             <constraint firstItem="nbw-dJ-hqm" firstAttribute="top" secondItem="mnD-x0-Uk8" secondAttribute="bottom" id="CPQ-XR-hYz"/>
-                            <constraint firstItem="bqD-6M-xlA" firstAttribute="leading" secondItem="KQT-XO-meb" secondAttribute="leading" id="DiM-mB-4o2"/>
                             <constraint firstItem="bqD-6M-xlA" firstAttribute="leading" secondItem="KQT-XO-meb" secondAttribute="leading" id="ICL-XO-mLo"/>
-                            <constraint firstItem="VLc-zR-KOn" firstAttribute="leading" secondItem="KQT-XO-meb" secondAttribute="leading" id="LdU-Dn-oEx"/>
                             <constraint firstItem="bqD-6M-xlA" firstAttribute="top" secondItem="nbw-dJ-hqm" secondAttribute="bottom" id="Nu4-cu-1NI"/>
-                            <constraint firstItem="KQT-XO-meb" firstAttribute="bottom" secondItem="VLc-zR-KOn" secondAttribute="bottom" id="b49-cG-VaO"/>
+                            <constraint firstItem="ewr-d5-QG6" firstAttribute="leading" secondItem="KQT-XO-meb" secondAttribute="leading" id="QAw-CV-Gwa"/>
                             <constraint firstItem="KQT-XO-meb" firstAttribute="trailing" secondItem="bqD-6M-xlA" secondAttribute="trailing" id="gdy-a3-di0"/>
                             <constraint firstItem="mnD-x0-Uk8" firstAttribute="leading" secondItem="KQT-XO-meb" secondAttribute="leading" id="i3w-Br-DST"/>
-                            <constraint firstItem="KQT-XO-meb" firstAttribute="trailing" secondItem="VLc-zR-KOn" secondAttribute="trailing" id="nRp-Q8-1cL"/>
+                            <constraint firstItem="ewr-d5-QG6" firstAttribute="bottom" secondItem="ee5-ly-Zpf" secondAttribute="bottom" id="r8s-0m-atx"/>
                             <constraint firstItem="nbw-dJ-hqm" firstAttribute="leading" secondItem="KQT-XO-meb" secondAttribute="leading" id="sYJ-Fy-v0f"/>
                             <constraint firstItem="KQT-XO-meb" firstAttribute="trailing" secondItem="mnD-x0-Uk8" secondAttribute="trailing" id="v6Z-dP-iKX"/>
-                            <constraint firstItem="bqD-6M-xlA" firstAttribute="bottom" secondItem="KQT-XO-meb" secondAttribute="bottom" id="yxY-iO-ard"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1974,8 +1988,9 @@
                         <outlet property="tableHeaderView" destination="XGc-FG-Cx2" id="3VW-fj-Gc4"/>
                         <outlet property="tableView" destination="nbw-dJ-hqm" id="4IL-Ps-tXQ"/>
                         <outlet property="textLabel" destination="o7A-QL-SDT" id="gka-cp-MQA"/>
-                        <outlet property="textView" destination="7n5-9y-VA7" id="3xg-2A-UK1"/>
-                        <outlet property="textViewBarView" destination="VLc-zR-KOn" id="fEx-E8-r4r"/>
+                        <outlet property="textView" destination="lAY-A6-GaC" id="Woc-zM-xXv"/>
+                        <outlet property="textViewBarBottomConstraint" destination="r8s-0m-atx" id="3lC-xH-OER"/>
+                        <outlet property="textViewBarView" destination="ewr-d5-QG6" id="6dJ-CZ-t0X"/>
                         <outlet property="titleLabel" destination="h1y-Jm-T18" id="hkP-dU-HuL"/>
                     </connections>
                 </viewController>
@@ -2025,8 +2040,8 @@
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="ellipsis.message.fill" catalog="system" width="128" height="114"/>
-        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="heart" width="128" height="128"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
         <image name="number.circle.fill" catalog="system" width="128" height="123"/>

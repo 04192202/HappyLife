@@ -31,6 +31,14 @@
 		9D7E3686299F8C4E00A12C81 /* PH1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D7E3684299F8C4E00A12C81 /* PH1.jpg */; };
 		9D7E368829A0B0C400A12C81 /* NoteDetailVC-Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E368729A0B0C400A12C81 /* NoteDetailVC-Like.swift */; };
 		9D7E368A29A0CDB100A12C81 /* WaterfallCell-Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E368929A0CDB100A12C81 /* WaterfallCell-Like.swift */; };
+		9DA0662C29A316BB00AD75C5 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0662B29A316BB00AD75C5 /* CommentView.swift */; };
+		9DA0662E29A316DB00AD75C5 /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DA0662D29A316DB00AD75C5 /* CommentView.xib */; };
+		9DA0663029A317CB00AD75C5 /* NoteDetailVC-TVDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0662F29A317CB00AD75C5 /* NoteDetailVC-TVDelegate.swift */; };
+		9DA0663229A317EB00AD75C5 /* NoteDetailVC-TVDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0663129A317EB00AD75C5 /* NoteDetailVC-TVDataSource.swift */; };
+		9DA0663429A3553200AD75C5 /* NoteDetailVC-LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0663329A3553200AD75C5 /* NoteDetailVC-LoadData.swift */; };
+		9DA0663629A3763900AD75C5 /* NoteDetailVC-DelComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0663529A3763900AD75C5 /* NoteDetailVC-DelComment.swift */; };
+		9DA0663829A3861000AD75C5 /* NoteDetailVC-PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0663729A3861000AD75C5 /* NoteDetailVC-PostComment.swift */; };
+		9DA0663A29A3862F00AD75C5 /* NoteDetailVC-PostReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0663929A3862F00AD75C5 /* NoteDetailVC-PostReply.swift */; };
 		9DAB06DA298BF67F00CE0DD1 /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB06D9298BF67F00CE0DD1 /* ChannelVC.swift */; };
 		9DAB06DC298BF9DE00CE0DD1 /* ChannelTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB06DB298BF9DE00CE0DD1 /* ChannelTableVC.swift */; };
 		9DAE3998298A79700040ABC9 /* NoteEdit-Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAE3997298A79700040ABC9 /* NoteEdit-Config.swift */; };
@@ -104,6 +112,14 @@
 		9D7E3684299F8C4E00A12C81 /* PH1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PH1.jpg; sourceTree = "<group>"; };
 		9D7E368729A0B0C400A12C81 /* NoteDetailVC-Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-Like.swift"; sourceTree = "<group>"; };
 		9D7E368929A0CDB100A12C81 /* WaterfallCell-Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WaterfallCell-Like.swift"; sourceTree = "<group>"; };
+		9DA0662B29A316BB00AD75C5 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		9DA0662D29A316DB00AD75C5 /* CommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentView.xib; sourceTree = "<group>"; };
+		9DA0662F29A317CB00AD75C5 /* NoteDetailVC-TVDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-TVDelegate.swift"; sourceTree = "<group>"; };
+		9DA0663129A317EB00AD75C5 /* NoteDetailVC-TVDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-TVDataSource.swift"; sourceTree = "<group>"; };
+		9DA0663329A3553200AD75C5 /* NoteDetailVC-LoadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-LoadData.swift"; sourceTree = "<group>"; };
+		9DA0663529A3763900AD75C5 /* NoteDetailVC-DelComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-DelComment.swift"; sourceTree = "<group>"; };
+		9DA0663729A3861000AD75C5 /* NoteDetailVC-PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-PostComment.swift"; sourceTree = "<group>"; };
+		9DA0663929A3862F00AD75C5 /* NoteDetailVC-PostReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-PostReply.swift"; sourceTree = "<group>"; };
 		9DAB06D9298BF67F00CE0DD1 /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
 		9DAB06DB298BF9DE00CE0DD1 /* ChannelTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableVC.swift; sourceTree = "<group>"; };
 		9DAE3997298A79700040ABC9 /* NoteEdit-Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEdit-Config.swift"; sourceTree = "<group>"; };
@@ -276,12 +292,20 @@
 				9DB0A134299E8E6100B1FB74 /* NoteDetailVC.swift */,
 				9DB0A139299E959D00B1FB74 /* NoteDetailVC-Config.swift */,
 				9DB0A137299E958200B1FB74 /* NoteDetailVC-UI.swift */,
+				9DA0663329A3553200AD75C5 /* NoteDetailVC-LoadData.swift */,
 				9DBE7B2029A1B4C000DFD690 /* NoteDetailVC-ShareOrMore.swift */,
 				9DBE7B2229A1B59100DFD690 /* NoteDetailVC-DelNote.swift */,
 				9DBE7B2429A1B59E00DFD690 /* NoteDetailVC-EditNote.swift */,
 				9D7E368729A0B0C400A12C81 /* NoteDetailVC-Like.swift */,
 				9DBE7B1E29A0D59400DFD690 /* NoteDetailVC-Fav.swift */,
+				9DA0663129A317EB00AD75C5 /* NoteDetailVC-TVDataSource.swift */,
+				9DA0662F29A317CB00AD75C5 /* NoteDetailVC-TVDelegate.swift */,
+				9DA0663729A3861000AD75C5 /* NoteDetailVC-PostComment.swift */,
+				9DA0663529A3763900AD75C5 /* NoteDetailVC-DelComment.swift */,
+				9DA0663929A3862F00AD75C5 /* NoteDetailVC-PostReply.swift */,
 				9DBE7B2629A1B94900DFD690 /* NoteDetailVC-Helper.swift */,
+				9DA0662B29A316BB00AD75C5 /* CommentView.swift */,
+				9DA0662D29A316DB00AD75C5 /* CommentView.xib */,
 			);
 			path = NoteDetail;
 			sourceTree = "<group>";
@@ -423,6 +447,7 @@
 				9DB0A122299B2CAF00B1FB74 /* Assets.xcassets in Resources */,
 				9D7E3685299F8C4E00A12C81 /* imagPH.png in Resources */,
 				9D066E7E2967D76E00536573 /* Main.storyboard in Resources */,
+				9DA0662E29A316DB00AD75C5 /* CommentView.xib in Resources */,
 				9D7E3686299F8C4E00A12C81 /* PH1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,14 +501,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DA0663029A317CB00AD75C5 /* NoteDetailVC-TVDelegate.swift in Sources */,
 				9D4963A12990DDCB00138FDF /* POICell.swift in Sources */,
 				9DAE399C298BC10B0040ABC9 /* TextViewIAView.swift in Sources */,
 				9DB0A1142994F17100B1FB74 /* NoteEditVC-Helper.swift in Sources */,
+				9DA0662C29A316BB00AD75C5 /* CommentView.swift in Sources */,
 				9DB0A124299B770400B1FB74 /* SocialLoginVC.swift in Sources */,
 				9DB70316298CC83500D5AB95 /* Protocols.swift in Sources */,
 				9D4963A52990FBE300138FDF /* POIVC-Location.swift in Sources */,
 				9DE8934F298A08BD008E743E /* NoteEditVC-DragDrop.swift in Sources */,
 				9DBE7B2329A1B59100DFD690 /* NoteDetailVC-DelNote.swift in Sources */,
+				9DA0663629A3763900AD75C5 /* NoteDetailVC-DelComment.swift in Sources */,
+				9DA0663229A317EB00AD75C5 /* NoteDetailVC-TVDataSource.swift in Sources */,
 				9DB0A128299BD9CE00B1FB74 /* CodeLoginVC.swift in Sources */,
 				9DB0A138299E958200B1FB74 /* NoteDetailVC-UI.swift in Sources */,
 				9D066E95297F7A4B00536573 /* NearByVC.swift in Sources */,
@@ -505,7 +534,9 @@
 				9DB0A11A2994FF4000B1FB74 /* MeVC.swift in Sources */,
 				9DBE7B2729A1B94900DFD690 /* NoteDetailVC-Helper.swift in Sources */,
 				9D066E8F2976CC1700536573 /* HomeVC.swift in Sources */,
+				9DA0663829A3861000AD75C5 /* NoteDetailVC-PostComment.swift in Sources */,
 				9DB0A12E299CE49000B1FB74 /* Login-Extensions.swift in Sources */,
+				9DA0663429A3553200AD75C5 /* NoteDetailVC-LoadData.swift in Sources */,
 				9DB0A1162994F32000B1FB74 /* NoteEditVC-UI.swift in Sources */,
 				9DD039FE2988B54300E827C0 /* PostVC.swift in Sources */,
 				9DB0A133299E4A7100B1FB74 /* NoteEditVC-Note.swift in Sources */,
@@ -520,6 +551,7 @@
 				9DB0A13C299F1F0700B1FB74 /* CustomViews.swift in Sources */,
 				9DD03A042988B7E100E827C0 /* TabBarC.swift in Sources */,
 				9DD03A062988BC5B00E827C0 /* System-Extensions.swift in Sources */,
+				9DA0663A29A3862F00AD75C5 /* NoteDetailVC-PostReply.swift in Sources */,
 				9D066E792967D76E00536573 /* SceneDelegate.swift in Sources */,
 				9D066E812967D76E00536573 /* LittlePink.xcdatamodeld in Sources */,
 				9DBE7B2129A1B4C000DFD690 /* NoteDetailVC-ShareOrMore.swift in Sources */,

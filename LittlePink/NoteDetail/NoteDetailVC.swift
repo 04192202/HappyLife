@@ -15,7 +15,14 @@ class NoteDetailVC: UIViewController {
 
     var note: LCObject
     var isLikeFromWaterfallCell = false
-    var delNoteFinished: (() -> ())? 
+    var delNoteFinished: (() -> ())?
+    
+    var comments : [LCObject] = []
+    
+    var isReply = false//用于判断用户按下textview的发送按钮时究竟是评论(comment)还是回复(reply)
+    
+    var commentSection = 0 //用于找出用户是对哪个评论进行的回复
+    
     //上方bar
     @IBOutlet weak var authorAvatarBtn: UIButton!
     @IBOutlet weak var authorNickNameBtn: UIButton!
@@ -47,6 +54,16 @@ class NoteDetailVC: UIViewController {
     
     @IBOutlet weak var textView: GrowingTextView!
     
+    @IBOutlet weak var textViewBarBottomConstraint: NSLayoutConstraint!
+  
+    //黑色遮罩
+    lazy var overlayView : UIView = {
+        let overlayView = UIView(frame: view.frame)
+        overlayView.backgroundColor = UIColor(white: 0, alpha: 0.2)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        overlayView.addGestureRecognizer(tap)
+        return overlayView
+    }()
     
     
     
@@ -101,30 +118,14 @@ class NoteDetailVC: UIViewController {
         super.viewDidLoad()
         
         config()
-        
-        imageSlideshow.setImageInputs([
-            ImageSource(image: UIImage(named: "1")!),
-            ImageSource(image: UIImage(named: "2")!),
-            ImageSource(image: UIImage(named: "3")!)
-        ])
-        let imageSize = UIImage(named: "1")!.size
-        imageSlideshowHeight.constant = (imageSize.height / imageSize.width) * screenRect.width
-        
         setUI()
+        getCommentsAndReplies()
     }
     //高度自适应
     //动态计算tableHeaderView的height(放在viewdidappear的话会触发多次),相当于手动实现了estimate size(目前cell已配备这种功能)
     override func viewDidLayoutSubviews() {
-        //计算出tableHeaderView里内容的总height--固定用法(开销较大,不可过度使用)
-        let height = tableHeaderView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-        //取出初始frame值,待会把里面的height替换成上面计算的height,其余不替换
-        var frame = tableHeaderView.frame
-        //一旦tableHeaderView的height已经是实际height了,则不能也没必要继续赋值frame了.
-        //需判断,否则更改tableHeaderView的frame会再次触发viewDidLayoutSubviews,进而进入死循环
-        if frame.height != height{
-            frame.size.height = height//替换成实际height
-            tableHeaderView.frame = frame//重新赋值frame,即可改变tableHeaderView的布局(实际就是改变height)
-        }
+        super.viewDidLayoutSubviews()
+        adjustTableHeaerViewHeight()
     }
     
     @IBAction func back(_ sender: Any) {
@@ -140,4 +141,20 @@ class NoteDetailVC: UIViewController {
     //收藏
     @IBAction func fav(_ sender: Any) { fav()   }
     
+    
+    @IBAction func comment(_ sender: Any) { comment() }
+    
+    
+    @IBAction func postCommentOrReply(_ sender: Any) {
+        
+        if !textView.isBlank{
+            
+            if !isReply{
+                postComment()
+            }else{
+                postReply()
+            }
+            hideAndResetTextView()
+        }
+    }
 }

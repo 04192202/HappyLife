@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import LeanCloud
 //普通辅助函数
 extension NoteDetailVC{
     //删除某个东西之前给用户的alert提示框
@@ -18,4 +18,26 @@ extension NoteDetailVC{
         alert.addAction(action2)
         present(alert, animated: true)
     }
+    
+    func comment(){
+        if let _ = LCApplication.default.currentUser{
+            showTextView()
+        }else{
+            showTextHUD("请先登录")
+        }
+    }
+    func showTextView(_ isReply:Bool = false, _ textViewPH: String = kNoteCommentPH ){
+        //reset
+        self.isReply = isReply
+        textView.placeholder = textViewPH
+        //UI
+        textView.becomeFirstResponder()
+        textViewBarView.isHidden = false
+    }
+    
+    func hideAndResetTextView(){
+        textView.resignFirstResponder()
+        textView.text = ""
+    }
+    
 }

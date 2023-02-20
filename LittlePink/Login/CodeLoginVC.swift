@@ -118,8 +118,6 @@ class CodeLoginVC: UIViewController {
         }
     }
     
-    
-    
 }
 // MARK: - UITextFieldDelegate
 //和做编辑页面正文输入差不多 截取
