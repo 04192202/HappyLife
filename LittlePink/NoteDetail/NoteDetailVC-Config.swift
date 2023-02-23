@@ -5,13 +5,14 @@
 //  Created by 郝义鹏 on 2023/2/17.
 //
 
-import Foundation
 import ImageSlideshow
 import GrowingTextView
+import LeanCloud
 
 extension NoteDetailVC{
     func config(){
         
+        //imageSlideshow
         imageSlideshow.zoomEnabled = true
         imageSlideshow.circular = false
         imageSlideshow.contentScaleMode = .scaleAspectFill
@@ -21,17 +22,27 @@ extension NoteDetailVC{
         pageControl.currentPageIndicatorTintColor = mainColor
         imageSlideshow.pageIndicator = pageControl
         
-        //textView (评论)
+        //因FaveButton的封装,用户未登录时点击按钮也会变色,故需提前拦截
+        if LCApplication.default.currentUser == nil{
+            likeBtn.setToNormal()
+            favBtn.setToNormal()
+        }
+        
+        //评论的textView
+        //GrowingTextView默认高度33时placeholder垂直居中,现高度变为40,需上下各补上3.5才行,加上原有的8,为11.5
         textView.textContainerInset = UIEdgeInsets(top: 11.5, left: 16, bottom: 11.5, right: 16)
         textView.delegate = self
+        
         //添加观察者,监听键盘的弹出和收起
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
+        //注册可重用的section header(评论view)
         tableView.register(UINib(nibName: "CommentView", bundle: nil), forHeaderFooterViewReuseIdentifier: kCommentViewID)
-        
+        //注册可重用的section footer(段与段之间的分隔线)
+        tableView.register(CommentSectionFooterView.self, forHeaderFooterViewReuseIdentifier: kCommentSectionFooterViewID)
     }
     
-    func adjustTableHeaerViewHeight(){
+    func adjustTableHeaderViewHeight(){
         //计算出tableHeaderView里内容的总height--固定用法(开销较大,不可过度使用)
         let height = tableHeaderView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         //取出初始frame值,待会把里面的height替换成上面计算的height,其余不替换
@@ -43,7 +54,6 @@ extension NoteDetailVC{
             tableHeaderView.frame = frame//重新赋值frame,即可改变tableHeaderView的布局(实际就是改变height)
         }
     }
-    
 }
 //自增长textView内文字换行时高度增长的动画
 extension NoteDetailVC: GrowingTextViewDelegate{
@@ -69,7 +79,6 @@ extension NoteDetailVC{
             }
             
             textViewBarBottomConstraint.constant = -keyboardH
-            //软键盘弹出效果
             view.layoutIfNeeded()
         }
     }

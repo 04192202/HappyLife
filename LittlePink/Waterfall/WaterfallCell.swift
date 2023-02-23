@@ -36,11 +36,14 @@ class WaterfallCell: UICollectionViewCell {
             imageView.kf.setImage(with: coverPhotoURL, options: [.transition(.fade(0.2))])
             
             //加载远程图片(作者头像)
-            let avatarURL = author.getImageURL(from: kAvatarCol, .avater)
+            let avatarURL = author.getImageURL(from: kAvatarCol, .avatar)
             avatarImageView.kf.setImage(with: avatarURL)
             
             //笔记标题
             titleLabel.text = note.getExactStringVal(kTitleCol)
+            
+            //笔记作者
+            nickNameLabel.text = author.getExactStringVal(kNickNameCol)
             
             //笔记被赞数
             likeCount = note.getExactIntVal(kLikeCountCol)

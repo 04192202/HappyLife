@@ -12,7 +12,7 @@ import FaveButton
 import GrowingTextView
 
 class NoteDetailVC: UIViewController {
-
+    
     var note: LCObject
     var isLikeFromWaterfallCell = false
     var delNoteFinished: (() -> ())?
@@ -22,6 +22,12 @@ class NoteDetailVC: UIViewController {
     var isReply = false//用于判断用户按下textview的发送按钮时究竟是评论(comment)还是回复(reply)
     
     var commentSection = 0 //用于找出用户是对哪个评论进行的回复
+    
+    var replies: [ExpandableReplies] = []
+    var replyToUser: LCUser?
+    
+    var isFromMeVC = false
+    var fromMeVCUser: LCUser?
     
     //上方bar
     @IBOutlet weak var authorAvatarBtn: UIButton!
@@ -55,7 +61,7 @@ class NoteDetailVC: UIViewController {
     @IBOutlet weak var textView: GrowingTextView!
     
     @IBOutlet weak var textViewBarBottomConstraint: NSLayoutConstraint!
-  
+    
     //黑色遮罩
     lazy var overlayView : UIView = {
         let overlayView = UIView(frame: view.frame)
@@ -120,12 +126,13 @@ class NoteDetailVC: UIViewController {
         config()
         setUI()
         getCommentsAndReplies()
+        getFav()
     }
     //高度自适应
     //动态计算tableHeaderView的height(放在viewdidappear的话会触发多次),相当于手动实现了estimate size(目前cell已配备这种功能)
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        adjustTableHeaerViewHeight()
+        adjustTableHeaderViewHeight()
     }
     
     @IBAction func back(_ sender: Any) {
@@ -133,6 +140,7 @@ class NoteDetailVC: UIViewController {
     }
     
     
+    @IBAction func goToAuthorMeVC(_ sender: Any) { noteToMeVC(author) }
     
     @IBAction func shareOrMore(_ sender: Any) { shareOrMore() }
     
@@ -148,10 +156,13 @@ class NoteDetailVC: UIViewController {
     @IBAction func postCommentOrReply(_ sender: Any) {
         
         if !textView.isBlank{
-            
             if !isReply{
+                //评论
+                //note-comment一对多;user-comment一对多,故创建/取出comment表,在里面放入note和user字段
                 postComment()
             }else{
+                //回复
+                //comment-reply一对多;user-reply一对多,和comment表类似
                 postReply()
             }
             hideAndResetTextView()

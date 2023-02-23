@@ -25,6 +25,7 @@ target 'LittlePink' do
   pod 'Kingfisher', '~> 7.0'
   pod "ImageSlideshow/Kingfisher"
   pod 'GrowingTextView', '0.7.2'
+  pod 'SegementSlide', '3.0.1'
   
 end
 post_install do |installer|

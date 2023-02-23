@@ -5,7 +5,6 @@
 //  Created by 郝义鹏 on 2023/2/20.
 //
 
-import Foundation
 import LeanCloud
 
 extension NoteDetailVC{

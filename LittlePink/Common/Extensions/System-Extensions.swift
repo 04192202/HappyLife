@@ -141,6 +141,13 @@ extension UIButton{
         isEnabled = false
         backgroundColor = mainLightColor
     }
+    //变成胶囊按钮
+    func makeCapsule(_ color: UIColor = .label){
+        layer.cornerRadius = frame.height / 2
+        layer.borderWidth = 1
+        layer.borderColor = color.cgColor
+    }
+    
 }
 
 extension UIImage{
@@ -234,6 +241,10 @@ extension UIViewController{
         hud.label.text = title
         hud.detailsLabel.text = subTitle
         hud.hide(animated: true, afterDelay: 2)
+    }
+    
+    func showLoginHUD(){
+        showTextHUD("请先登录")
     }
     
     //用于在本vc调用,让他显示到别的vc(如父vc)里去
@@ -340,5 +351,15 @@ extension FileManager{
         }
         
         return fileURL
+    }
+}
+
+//我的个人页面外框index
+extension UserDefaults{
+    static func increase(_ key: String, by val: Int = 1){
+        standard.set(standard.integer(forKey: key) + val, forKey: key)
+    }
+    static func decrease(_ key: String, by val: Int = 1){
+        standard.set(standard.integer(forKey: key) - val, forKey: key)
     }
 }

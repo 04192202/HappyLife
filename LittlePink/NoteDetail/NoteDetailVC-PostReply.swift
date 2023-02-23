@@ -42,6 +42,7 @@ extension NoteDetailVC{
             replies[commentSection].replies.append(reply)
             
             //UI
+            //如果当前是展开状态
             if replies[commentSection].isExpanded{
                 tableView.performBatchUpdates {
                     //row:先利用commentSection找到当前section中一共就几个回复,减去1之后就得出插入的新row的索引
@@ -50,7 +51,9 @@ extension NoteDetailVC{
                         with: .automatic
                     )
                 }
+            //如果不是展开状态
             }else{
+                //找到当前第一个cell
                 let cell = tableView.cellForRow(at: IndexPath(row: 0, section: commentSection)) as! ReplyCell
                 cell.showAllReplyBtn.setTitle("展示 \(replies[commentSection].replies.count - 1) 条回复", for: .normal)
             }

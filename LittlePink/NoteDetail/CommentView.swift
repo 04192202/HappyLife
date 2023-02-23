@@ -18,15 +18,12 @@ import Kingfisher
 //https://developer.apple.com/documentation/uikit/uitableview/1614957-estimatedsectionheaderheight
 
 class CommentView: UITableViewHeaderFooterView {
-
     @IBOutlet weak var avatarImageView: UIImageView!
-    
     @IBOutlet weak var nickNameLabel: UILabel!
-    
     @IBOutlet weak var authorLabel: UILabel!
-    
-    
     @IBOutlet weak var commentTextLabel: UILabel!
+    
+    
     
     var comment: LCObject?{
         didSet{
@@ -34,10 +31,10 @@ class CommentView: UITableViewHeaderFooterView {
             
             //评论人的头像和昵称
             if let user = comment.get(kUserCol) as? LCUser{
-                avatarImageView.kf.setImage(with: user.getImageURL(from: kAvatarCol, .avater))
+                avatarImageView.kf.setImage(with: user.getImageURL(from: kAvatarCol, .avatar))
                 nickNameLabel.text = user.getExactStringVal(kNickNameCol)
             }
-            // MARK: - 富文本
+            
             //评论内容和评论时间
             let commentText = comment.getExactStringVal(kTextCol)
             let createdAt = comment.createdAt?.value
@@ -48,6 +45,3 @@ class CommentView: UITableViewHeaderFooterView {
     }
 
 }
-
-
-

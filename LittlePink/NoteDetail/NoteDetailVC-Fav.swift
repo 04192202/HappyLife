@@ -19,7 +19,7 @@ extension NoteDetailVC{
             perform(#selector(favBtnTappedWhenLogin), with: nil, afterDelay: 1)
             
         }else{
-            showGlobalTextHUD("请先登录")
+            showLoginHUD()
         }
     }
     
@@ -39,7 +39,7 @@ extension NoteDetailVC{
                 try? userFav.set(kNoteCol, value: note)
                 userFav.save { _ in }
                 try? note.increase(kFavCountCol)
-                //LCObject.userInfo(where: authorObjectId, increase: kFavCountCol)
+                LCObject.userInfo(where: authorObjectId, increase: kFavCountCol)
             }else{
                 //1-2.删除--此处这个包没有找到更好的方法,希望以后能增加新API
                 let query = LCQuery(className: kUserFavTable)
@@ -52,7 +52,7 @@ extension NoteDetailVC{
                 }
                 try? note.set(kFavCountCol, value: favCount)
                 note.save { _ in }
-                //LCObject.userInfo(where: authorObjectId, decrease: kFavCountCol, to: favCount)
+                LCObject.userInfo(where: authorObjectId, decrease: kFavCountCol, to: favCount)
             }
         }
     }

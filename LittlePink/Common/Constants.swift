@@ -42,6 +42,10 @@ let mainLightColor = UIColor(named: "main-light")!
 // MARK: - UI布局 屏幕宽度
 let screenRect = UIScreen.main.bounds
 
+// MARK: - UserDefaults的key
+let kDraftNoteCount = "draftNoteCount"
+
+
 // MARK: - CoreData
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 //持久化容器
@@ -135,6 +139,7 @@ let kNickNameCol = "nickName"
 let kAvatarCol = "avatar"
 let kGenderCol = "gender"
 let kIntroCol = "intro"
+let kIDCol = "id"
 
 //Note表
 let kCoverPhotoCol = "coverPhoto"
@@ -167,6 +172,7 @@ let kReplyToUserCol = "replyToUser"
 //UserInfo表
 let kUserObjectIdCol = "userObjectId"
 
+
 // MARK: - 全局函数
 
 func largeIcon(_ iconName:String , with color: UIColor = .label)-> UIImage {
@@ -175,6 +181,13 @@ func largeIcon(_ iconName:String , with color: UIColor = .label)-> UIImage {
     
     return icon.withTintColor(color)
 }
+
+func fontIcon(_ iconName: String, fontSize: CGFloat, with color: UIColor = .label) -> UIImage{
+    let config = UIImage.SymbolConfiguration(font: .systemFont(ofSize: fontSize))
+    let icon = UIImage(systemName: iconName, withConfiguration: config)!
+    return icon.withTintColor(color)
+}
+
 
 func showGlobalTextHUD(_ title: String){
     let window = UIApplication.shared.windows.last!

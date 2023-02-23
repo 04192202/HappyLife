@@ -46,6 +46,8 @@ extension WaterfallVC{
             //数据2:内存中的
             self.draftNotes.remove(at: index)
             
+            UserDefaults.decrease(kDraftNoteCount)
+            
             //UI
             DispatchQueue.main.async {
                 //用deleteItems会出现'index out of range'的错误,因为DataSource里面的index没有更新过来,故直接使用reloadData

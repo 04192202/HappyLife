@@ -8,16 +8,29 @@ import UIKit
 import CHTCollectionViewWaterfallLayout
 import XLPagerTabStrip
 import LeanCloud
+import SegementSlide
 
-class WaterfallVC: UICollectionViewController {
+class WaterfallVC: UICollectionViewController,SegementSlideContentScrollViewDelegate {
     
     var channel = ""
-    //草稿相关数据
-    var isMyDraft = false
+    
+    @objc var scrollView: UIScrollView { collectionView }
+    
+    //草稿页相关数据
+    var isDraft = false
     var draftNotes: [DraftNote] = []
+    
     //首页相关数据
     var notes: [LCObject] = []
-  
+    
+    //个人页相关数据
+    var isMyDraft = false//用于判断是否显示我的草稿cell
+    var user: LCUser?//可用于判断当前是否在个人页面
+    var isMyNote = false//在上面user的基础上,用于判断是否是'笔记'tab页
+    var isMyFav = false//在上面user的基础上,用于判断是否是'收藏'tab页
+    var isMyselfLike = false//在上面user的基础上,用于判断已登录用户是否在看自己的'赞过'tab页
+    var isFromMeVC = false
+    var fromMeVCUser: LCUser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +38,6 @@ class WaterfallVC: UICollectionViewController {
         config()
         getNotes()
         getDraftNotes()
-        
     }
 
     

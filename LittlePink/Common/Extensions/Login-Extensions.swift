@@ -12,7 +12,7 @@ extension UIViewController{
     func configAfterLogin(_ user:LCUser,_ nickName:String){
         if let _ = user.get(kNickNameCol){
             
-            dismissAndShowMeVC()
+            dismissAndShowMeVC(user)
             
         }else{//首次登陆，放入随机头像
             let group = DispatchGroup()
@@ -32,27 +32,30 @@ extension UIViewController{
                 return
             }
             group.enter()
-                user.save{ _ in
-                    group.leave()
-            }
+                user.save{ _ in group.leave() }
+            
+            group.enter()
+            let userInfo = LCObject(className: kUserInfoTable)
+            try? userInfo.set(kUserObjectIdCol, value: user.objectId)
+            userInfo.save{ _ in group.leave() }
+            
             group.notify(queue: .main){
-                self.dismissAndShowMeVC()
+                self.dismissAndShowMeVC(user)
             }
         }
     }
     
-    func dismissAndShowMeVC(){
+    func dismissAndShowMeVC(_ user: LCUser){
         hideLoadHUD()
         DispatchQueue.main.async {
-            //找到sb
-
             let mainSB = UIStoryboard(name: "Main", bundle: nil)
-            let meVC = mainSB.instantiateViewController(identifier: kMeVCID)
+            let meVC = mainSB.instantiateViewController(identifier: kMeVCID) { coder in
+                MeVC(coder: coder, user: user)
+            }
             loginAndMeParentVC.removeChildren()
             loginAndMeParentVC.add(child: meVC)
-
+            
             self.dismiss(animated: true)
         }
-
     }
 }

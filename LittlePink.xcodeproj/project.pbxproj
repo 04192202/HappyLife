@@ -39,6 +39,22 @@
 		9DA0663629A3763900AD75C5 /* NoteDetailVC-DelComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0663529A3763900AD75C5 /* NoteDetailVC-DelComment.swift */; };
 		9DA0663829A3861000AD75C5 /* NoteDetailVC-PostComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0663729A3861000AD75C5 /* NoteDetailVC-PostComment.swift */; };
 		9DA0663A29A3862F00AD75C5 /* NoteDetailVC-PostReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0663929A3862F00AD75C5 /* NoteDetailVC-PostReply.swift */; };
+		9DA0663C29A3943300AD75C5 /* CommentSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0663B29A3943300AD75C5 /* CommentSectionFooterView.swift */; };
+		9DA0663E29A3B79700AD75C5 /* ReplyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0663D29A3B79700AD75C5 /* ReplyCell.swift */; };
+		9DA0664029A5A83B00AD75C5 /* ExpandableReplies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0663F29A5A83B00AD75C5 /* ExpandableReplies.swift */; };
+		9DA0664329A5B11E00AD75C5 /* NoteDetailVC-DelReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0664229A5B11E00AD75C5 /* NoteDetailVC-DelReply.swift */; };
+		9DA0664529A6186C00AD75C5 /* Other-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0664429A6186C00AD75C5 /* Other-Extensions.swift */; };
+		9DA0664729A7568600AD75C5 /* MeVC-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0664629A7568600AD75C5 /* MeVC-UI.swift */; };
+		9DA0664929A757E000AD75C5 /* MeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0664829A757E000AD75C5 /* MeHeaderView.swift */; };
+		9DA0664B29A757FB00AD75C5 /* MeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DA0664A29A757FB00AD75C5 /* MeHeaderView.xib */; };
+		9DA0664D29A7892A00AD75C5 /* NoteDetailVC-MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0664C29A7892A00AD75C5 /* NoteDetailVC-MeVC.swift */; };
+		9DA0664F29A7917C00AD75C5 /* MeVC-BackOrDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0664E29A7917C00AD75C5 /* MeVC-BackOrDrawer.swift */; };
+		9DA0665129A792AB00AD75C5 /* CustomClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0665029A792AB00AD75C5 /* CustomClasses.swift */; };
+		9DA0665329A7AF7400AD75C5 /* MeVC-Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0665229A7AF7400AD75C5 /* MeVC-Config.swift */; };
+		9DA0665529A7AFD600AD75C5 /* MeVC-HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0665429A7AFD600AD75C5 /* MeVC-HeaderView.swift */; };
+		9DA0665729A7B2D100AD75C5 /* MeVC-EditIntro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0665629A7B2D100AD75C5 /* MeVC-EditIntro.swift */; };
+		9DA0665929A7B31800AD75C5 /* MeVC-EditOrFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0665829A7B31800AD75C5 /* MeVC-EditOrFollow.swift */; };
+		9DA0665B29A7B33F00AD75C5 /* MeVc-SettingOrChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0665A29A7B33F00AD75C5 /* MeVc-SettingOrChat.swift */; };
 		9DAB06DA298BF67F00CE0DD1 /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB06D9298BF67F00CE0DD1 /* ChannelVC.swift */; };
 		9DAB06DC298BF9DE00CE0DD1 /* ChannelTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB06DB298BF9DE00CE0DD1 /* ChannelTableVC.swift */; };
 		9DAE3998298A79700040ABC9 /* NoteEdit-Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAE3997298A79700040ABC9 /* NoteEdit-Config.swift */; };
@@ -120,6 +136,22 @@
 		9DA0663529A3763900AD75C5 /* NoteDetailVC-DelComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-DelComment.swift"; sourceTree = "<group>"; };
 		9DA0663729A3861000AD75C5 /* NoteDetailVC-PostComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-PostComment.swift"; sourceTree = "<group>"; };
 		9DA0663929A3862F00AD75C5 /* NoteDetailVC-PostReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-PostReply.swift"; sourceTree = "<group>"; };
+		9DA0663B29A3943300AD75C5 /* CommentSectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentSectionFooterView.swift; sourceTree = "<group>"; };
+		9DA0663D29A3B79700AD75C5 /* ReplyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyCell.swift; sourceTree = "<group>"; };
+		9DA0663F29A5A83B00AD75C5 /* ExpandableReplies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableReplies.swift; sourceTree = "<group>"; };
+		9DA0664229A5B11E00AD75C5 /* NoteDetailVC-DelReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-DelReply.swift"; sourceTree = "<group>"; };
+		9DA0664429A6186C00AD75C5 /* Other-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Other-Extensions.swift"; sourceTree = "<group>"; };
+		9DA0664629A7568600AD75C5 /* MeVC-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeVC-UI.swift"; sourceTree = "<group>"; };
+		9DA0664829A757E000AD75C5 /* MeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeHeaderView.swift; sourceTree = "<group>"; };
+		9DA0664A29A757FB00AD75C5 /* MeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeHeaderView.xib; sourceTree = "<group>"; };
+		9DA0664C29A7892A00AD75C5 /* NoteDetailVC-MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteDetailVC-MeVC.swift"; sourceTree = "<group>"; };
+		9DA0664E29A7917C00AD75C5 /* MeVC-BackOrDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeVC-BackOrDrawer.swift"; sourceTree = "<group>"; };
+		9DA0665029A792AB00AD75C5 /* CustomClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClasses.swift; sourceTree = "<group>"; };
+		9DA0665229A7AF7400AD75C5 /* MeVC-Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeVC-Config.swift"; sourceTree = "<group>"; };
+		9DA0665429A7AFD600AD75C5 /* MeVC-HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeVC-HeaderView.swift"; sourceTree = "<group>"; };
+		9DA0665629A7B2D100AD75C5 /* MeVC-EditIntro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeVC-EditIntro.swift"; sourceTree = "<group>"; };
+		9DA0665829A7B31800AD75C5 /* MeVC-EditOrFollow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeVC-EditOrFollow.swift"; sourceTree = "<group>"; };
+		9DA0665A29A7B33F00AD75C5 /* MeVc-SettingOrChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeVc-SettingOrChat.swift"; sourceTree = "<group>"; };
 		9DAB06D9298BF67F00CE0DD1 /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
 		9DAB06DB298BF9DE00CE0DD1 /* ChannelTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableVC.swift; sourceTree = "<group>"; };
 		9DAE3997298A79700040ABC9 /* NoteEdit-Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEdit-Config.swift"; sourceTree = "<group>"; };
@@ -215,6 +247,8 @@
 				9D066E762967D76E00536573 /* AppDelegate.swift */,
 				9D066E782967D76E00536573 /* SceneDelegate.swift */,
 				9DD03A032988B7E100E827C0 /* TabBarC.swift */,
+				9DA0663F29A5A83B00AD75C5 /* ExpandableReplies.swift */,
+				9DA0664129A5AC5F00AD75C5 /* Models */,
 				9D066E7C2967D76E00536573 /* Main.storyboard */,
 				9D066E98297F7ED600536573 /* Home */,
 				9DD039F32988AC7D00E827C0 /* Waterfall */,
@@ -254,6 +288,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		9DA0664129A5AC5F00AD75C5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		9DB0A11B2998CBFE00B1FB74 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +314,7 @@
 				9DB0A11E2998CE0300B1FB74 /* LocalLogin-Extensions.swift */,
 				9DB0A12D299CE49000B1FB74 /* Login-Extensions.swift */,
 				9DB0A12B299CDF5E00B1FB74 /* LC-Extensions.swift */,
+				9DA0664429A6186C00AD75C5 /* Other-Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -282,6 +324,15 @@
 			children = (
 				9DB0A12F299CECC200B1FB74 /* LoginAndMeParentVC.swift */,
 				9DB0A1192994FF4000B1FB74 /* MeVC.swift */,
+				9DA0665229A7AF7400AD75C5 /* MeVC-Config.swift */,
+				9DA0664629A7568600AD75C5 /* MeVC-UI.swift */,
+				9DA0665429A7AFD600AD75C5 /* MeVC-HeaderView.swift */,
+				9DA0664E29A7917C00AD75C5 /* MeVC-BackOrDrawer.swift */,
+				9DA0665629A7B2D100AD75C5 /* MeVC-EditIntro.swift */,
+				9DA0665829A7B31800AD75C5 /* MeVC-EditOrFollow.swift */,
+				9DA0665A29A7B33F00AD75C5 /* MeVc-SettingOrChat.swift */,
+				9DA0664829A757E000AD75C5 /* MeHeaderView.swift */,
+				9DA0664A29A757FB00AD75C5 /* MeHeaderView.xib */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -303,9 +354,13 @@
 				9DA0663729A3861000AD75C5 /* NoteDetailVC-PostComment.swift */,
 				9DA0663529A3763900AD75C5 /* NoteDetailVC-DelComment.swift */,
 				9DA0663929A3862F00AD75C5 /* NoteDetailVC-PostReply.swift */,
+				9DA0664229A5B11E00AD75C5 /* NoteDetailVC-DelReply.swift */,
+				9DA0664C29A7892A00AD75C5 /* NoteDetailVC-MeVC.swift */,
 				9DBE7B2629A1B94900DFD690 /* NoteDetailVC-Helper.swift */,
 				9DA0662B29A316BB00AD75C5 /* CommentView.swift */,
+				9DA0663B29A3943300AD75C5 /* CommentSectionFooterView.swift */,
 				9DA0662D29A316DB00AD75C5 /* CommentView.xib */,
+				9DA0663D29A3B79700AD75C5 /* ReplyCell.swift */,
 			);
 			path = NoteDetail;
 			sourceTree = "<group>";
@@ -317,6 +372,7 @@
 				9D066E96297F7CC800536573 /* Constants.swift */,
 				9DB70315298CC83500D5AB95 /* Protocols.swift */,
 				9DB0A13B299F1F0700B1FB74 /* CustomViews.swift */,
+				9DA0665029A792AB00AD75C5 /* CustomClasses.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -447,6 +503,7 @@
 				9DB0A122299B2CAF00B1FB74 /* Assets.xcassets in Resources */,
 				9D7E3685299F8C4E00A12C81 /* imagPH.png in Resources */,
 				9D066E7E2967D76E00536573 /* Main.storyboard in Resources */,
+				9DA0664B29A757FB00AD75C5 /* MeHeaderView.xib in Resources */,
 				9DA0662E29A316DB00AD75C5 /* CommentView.xib in Resources */,
 				9D7E3686299F8C4E00A12C81 /* PH1.jpg in Resources */,
 			);
@@ -501,6 +558,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DA0664329A5B11E00AD75C5 /* NoteDetailVC-DelReply.swift in Sources */,
 				9DA0663029A317CB00AD75C5 /* NoteDetailVC-TVDelegate.swift in Sources */,
 				9D4963A12990DDCB00138FDF /* POICell.swift in Sources */,
 				9DAE399C298BC10B0040ABC9 /* TextViewIAView.swift in Sources */,
@@ -511,11 +569,17 @@
 				9D4963A52990FBE300138FDF /* POIVC-Location.swift in Sources */,
 				9DE8934F298A08BD008E743E /* NoteEditVC-DragDrop.swift in Sources */,
 				9DBE7B2329A1B59100DFD690 /* NoteDetailVC-DelNote.swift in Sources */,
+				9DA0664929A757E000AD75C5 /* MeHeaderView.swift in Sources */,
 				9DA0663629A3763900AD75C5 /* NoteDetailVC-DelComment.swift in Sources */,
 				9DA0663229A317EB00AD75C5 /* NoteDetailVC-TVDataSource.swift in Sources */,
+				9DA0665329A7AF7400AD75C5 /* MeVC-Config.swift in Sources */,
 				9DB0A128299BD9CE00B1FB74 /* CodeLoginVC.swift in Sources */,
+				9DA0664729A7568600AD75C5 /* MeVC-UI.swift in Sources */,
 				9DB0A138299E958200B1FB74 /* NoteDetailVC-UI.swift in Sources */,
 				9D066E95297F7A4B00536573 /* NearByVC.swift in Sources */,
+				9DA0665729A7B2D100AD75C5 /* MeVC-EditIntro.swift in Sources */,
+				9DA0665529A7AFD600AD75C5 /* MeVC-HeaderView.swift in Sources */,
+				9DA0663C29A3943300AD75C5 /* CommentSectionFooterView.swift in Sources */,
 				9DE8934729892B22008E743E /* PhotoCell.swift in Sources */,
 				9DB0A130299CECC200B1FB74 /* LoginAndMeParentVC.swift in Sources */,
 				9DD039F02988144800E827C0 /* WaterfallVC.swift in Sources */,
@@ -535,17 +599,24 @@
 				9DBE7B2729A1B94900DFD690 /* NoteDetailVC-Helper.swift in Sources */,
 				9D066E8F2976CC1700536573 /* HomeVC.swift in Sources */,
 				9DA0663829A3861000AD75C5 /* NoteDetailVC-PostComment.swift in Sources */,
+				9DA0664529A6186C00AD75C5 /* Other-Extensions.swift in Sources */,
 				9DB0A12E299CE49000B1FB74 /* Login-Extensions.swift in Sources */,
 				9DA0663429A3553200AD75C5 /* NoteDetailVC-LoadData.swift in Sources */,
+				9DA0664F29A7917C00AD75C5 /* MeVC-BackOrDrawer.swift in Sources */,
 				9DB0A1162994F32000B1FB74 /* NoteEditVC-UI.swift in Sources */,
+				9DA0664029A5A83B00AD75C5 /* ExpandableReplies.swift in Sources */,
 				9DD039FE2988B54300E827C0 /* PostVC.swift in Sources */,
 				9DB0A133299E4A7100B1FB74 /* NoteEditVC-Note.swift in Sources */,
 				9D066E91297F7A1700536573 /* FollowVC.swift in Sources */,
+				9DA0665129A792AB00AD75C5 /* CustomClasses.swift in Sources */,
 				9DB0A11D2998CC2F00B1FB74 /* LoginVC.swift in Sources */,
 				9D7E368A29A0CDB100A12C81 /* WaterfallCell-Like.swift in Sources */,
+				9DA0664D29A7892A00AD75C5 /* NoteDetailVC-MeVC.swift in Sources */,
 				9DAB06DA298BF67F00CE0DD1 /* ChannelVC.swift in Sources */,
 				9DE89351298A1C46008E743E /* NoteEditVC-CollectionView.swift in Sources */,
+				9DA0665929A7B31800AD75C5 /* MeVC-EditOrFollow.swift in Sources */,
 				9DBE7B2529A1B59E00DFD690 /* NoteDetailVC-EditNote.swift in Sources */,
+				9DA0665B29A7B33F00AD75C5 /* MeVc-SettingOrChat.swift in Sources */,
 				9D5CB34429949894008FB1EC /* WaterfallVC-LoadData.swift in Sources */,
 				9D5CB34A2994E2C4008FB1EC /* WaterfallVC-Delegate.swift in Sources */,
 				9DB0A13C299F1F0700B1FB74 /* CustomViews.swift in Sources */,
@@ -555,6 +626,7 @@
 				9D066E792967D76E00536573 /* SceneDelegate.swift in Sources */,
 				9D066E812967D76E00536573 /* LittlePink.xcdatamodeld in Sources */,
 				9DBE7B2129A1B4C000DFD690 /* NoteDetailVC-ShareOrMore.swift in Sources */,
+				9DA0663E29A3B79700AD75C5 /* ReplyCell.swift in Sources */,
 				9DAB06DC298BF9DE00CE0DD1 /* ChannelTableVC.swift in Sources */,
 				9D5CB346299498E7008FB1EC /* WaterfallVC-Config.swift in Sources */,
 				9D066E93297F7A3100536573 /* DiscoverVC.swift in Sources */,
