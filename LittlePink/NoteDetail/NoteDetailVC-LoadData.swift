@@ -72,6 +72,7 @@ extension NoteDetailVC{
             //map后:  ["可展开回复对象", "可展开回复对象", "可展开回复对象"]
             self.replies = repliesDic.sorted{ $0.key < $1.key }.map{ ExpandableReplies(replies: $0.value) }
             DispatchQueue.main.async {
+                
                 self.tableView.reloadData()
             }
         }

@@ -21,6 +21,7 @@ import SegementSlide
 class MeVC: SegementSlideDefaultViewController {
     
     var user: LCUser
+    lazy var meHeaderView = Bundle.loadView(fromNib: "MeHeaderView", with: MeHeaderView.self)
     
     var isFromNote = false
     var isMySelf = false
@@ -57,10 +58,11 @@ class MeVC: SegementSlideDefaultViewController {
         let isMyDraft = (index == 0) && isMySelf && (UserDefaults.standard.integer(forKey: kDraftNoteCount) > 0)
         
         let vc = storyboard!.instantiateViewController(identifier: kWaterfallVCID) as! WaterfallVC
+        
         vc.isMyDraft = isMyDraft
         vc.user = user
-        vc.isMyNote = index == 0
-        vc.isMyFav = index == 1
+        vc.isMyNote = index == 0 //我的笔记
+        vc.isMyFav = index == 1 //我的收藏
         vc.isMyselfLike = (isMySelf && index == 2)
         vc.isFromMeVC = true
         vc.fromMeVCUser = user

@@ -34,6 +34,7 @@ class NoteDetailVC: UIViewController {
     @IBOutlet weak var authorNickNameBtn: UIButton!
     @IBOutlet weak var followBtn: UIButton!
     @IBOutlet weak var shareOrMoreBtn: UIButton!
+    
     //tableHeaderView
     @IBOutlet weak var imageSlideshow: ImageSlideshow!
     @IBOutlet weak var imageSlideshowHeight: NSLayoutConstraint!

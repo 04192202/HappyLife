@@ -48,7 +48,7 @@ class MeHeaderView: UIView {
             
             //个人简介
             let intro = user.getExactStringVal(kIntroCol)
-            introLabel.text = intro.isEmpty ? "填写个人简历让更多的人认识你，点击此处填写" : intro
+            introLabel.text = intro.isEmpty ? kIntroPH : intro
             
             //获赞和收藏数
             guard let userObjectId =  user.objectId?.stringValue else { return }

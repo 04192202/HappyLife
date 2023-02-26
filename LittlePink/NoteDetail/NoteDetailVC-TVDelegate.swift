@@ -85,6 +85,7 @@ extension NoteDetailVC: UITableViewDelegate{
                 
                 present(alert, animated: true)
             }else{//当前登录用户点击别人发布的回复--回复这个回复
+                
                 self.prepareForReply(replyAuthorNickName, indexPath.section, replyAuthor)
             }
         }else{

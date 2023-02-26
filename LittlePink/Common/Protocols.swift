@@ -25,3 +25,7 @@ protocol ChannelVCDelegate {
 protocol POIVCDelegate {
     func updatePOIName(_ poiName: String)
 }
+
+protocol IntroVCDelegate {
+    func updateIntro(_ intro:String)
+}

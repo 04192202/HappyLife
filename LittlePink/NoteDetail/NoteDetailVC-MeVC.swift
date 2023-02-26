@@ -15,6 +15,7 @@ extension NoteDetailVC{
         if isFromMeVC, let fromMeVCUser = fromMeVCUser, fromMeVCUser == user{
             dismiss(animated: true)
         }else{
+            
             let meVC = storyboard!.instantiateViewController(identifier: kMeVCID) { coder in
                 MeVC(coder: coder, user: user)
             }

@@ -23,9 +23,11 @@ extension NoteDetailVC{
             
             //内存数据
             comments.insert(comment, at: 0)
+            replies.insert(ExpandableReplies(replies: []), at: 0)
             
             //UI
             tableView.performBatchUpdates {
+                
                 tableView.insertSections(IndexSet(integer: 0), with: .automatic)
             }
         } catch {

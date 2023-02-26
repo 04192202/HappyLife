@@ -17,6 +17,8 @@ class WaterfallCell: UICollectionViewCell {
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var likeBtn: UIButton!
     
+    var isMyselfLike = false
+    
     var likeCount = 0 {
         didSet{
             likeBtn.setTitle(likeCount.formattedStr, for: .normal)
@@ -48,29 +50,33 @@ class WaterfallCell: UICollectionViewCell {
             //笔记被赞数
             likeCount = note.getExactIntVal(kLikeCountCol)
             currentLikeCount = likeCount
-
+            
             //判断是否已点赞
-            if let user = LCApplication.default.currentUser{
-                let query = LCQuery(className: kUserLikeTable)
-                query.whereKey(kUserCol, .equalTo(user))
-                query.whereKey(kNoteCol, .equalTo(note))
-                query.getFirst { res in
-                    if case .success = res{
-                        DispatchQueue.main.async {
-                            self.likeBtn.isSelected = true
+            if isMyselfLike{
+                likeBtn.isSelected = true
+            }else{
+                if let user = LCApplication.default.currentUser{
+                    let query = LCQuery(className: kUserLikeTable)
+                    query.whereKey(kUserCol, .equalTo(user))
+                    query.whereKey(kNoteCol, .equalTo(note))
+                    query.getFirst { res in
+                        if case .success = res{
+                            DispatchQueue.main.async {
+                                self.likeBtn.isSelected = true
+                            }
                         }
                     }
                 }
             }
         }
     }
-            
     // 浏览爱心 外框颜色
     override func awakeFromNib() {
         super.awakeFromNib()
         //配置点赞按钮被选中时的样式
         let icon = UIImage(systemName: "heart.fill")?.withTintColor(mainColor, renderingMode: .alwaysOriginal)
         likeBtn.setImage(icon, for: .selected)
+        
     }
     
     @IBAction func like(_ sender: Any) {

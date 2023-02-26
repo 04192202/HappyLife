@@ -20,6 +20,8 @@ let kLoginVCID = "LoginVCID"
 let kMeVCID = "MeVCID"
 let kDraftNotesNaviID = "DraftNotesNaviID"
 let kNoteDetailVCID = "NoteDetailVCID"
+let kIntroVCID = "IntroVCID"
+let kEditProfileNaviID = "EditProfileNaviID"
 
 // MARK: Cell相关ID
 let kWaterfallCellID = "WaterfallCellID"
@@ -28,6 +30,7 @@ let kPhotoFooterID = "PhotoFooterID"
 let kSubChannelCellID = "SubChannelCellID"
 let kPOICellID = "POICellID"
 let kDraftNoteWaterfallCellID = "DraftNoteWaterfallCellID"
+let kMyDraftNoteWaterfallCellID = "MyDraftNoteWaterfallCellID"
 let kCommentViewID = "CommentViewID"
 let kReplyCellID = "ReplyCellID"
 let kCommentSectionFooterViewID = "CommentSectionFooterViewID"
@@ -75,6 +78,9 @@ let kMaxNoteTitleCount = 20
 let kMaxNoteTextCount = 800
 let kNoteCommentPH = "精彩评论将被优先展示..."
 
+//个人简介字数限制
+let kMaxIntroCount = 80
+let kIntroPH = "填写个人简历让更多的人认识你，点击此处填写"
 //话题
 let kAllSubChannels = [
     ["穿神马是神马", "就快瘦到50斤啦", "花5个小时修的靓图", "网红店入坑记"],

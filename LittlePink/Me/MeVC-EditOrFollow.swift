@@ -12,12 +12,15 @@ extension MeVC{
     @objc func editOrFollow(){
         if isMySelf{//编辑资料
             
+            let navi = storyboard!.instantiateViewController(identifier: kEditProfileNaviID) as! UINavigationController
+            navi.modalPresentationStyle = .fullScreen
+            present(navi, animated: true)
             
             
             
         }else{
             if let _ = LCApplication.default.currentUser{
-                print("悦生活待开发")
+                showTextHUD("悦生活待开发")
             }else{
                 showLoginHUD()
             }
