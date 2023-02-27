@@ -146,6 +146,7 @@ let kAvatarCol = "avatar"
 let kGenderCol = "gender"
 let kIntroCol = "intro"
 let kIDCol = "id"
+let kBirthCol = "birth"
 
 //Note表
 let kCoverPhotoCol = "coverPhoto"

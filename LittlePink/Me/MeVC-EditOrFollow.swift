@@ -14,6 +14,9 @@ extension MeVC{
             
             let navi = storyboard!.instantiateViewController(identifier: kEditProfileNaviID) as! UINavigationController
             navi.modalPresentationStyle = .fullScreen
+            let editProfileTableVC = navi.topViewController as! EditProfileTableVC
+            editProfileTableVC.user = user
+            editProfileTableVC.delegate = self
             present(navi, animated: true)
             
             

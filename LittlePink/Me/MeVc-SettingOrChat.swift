@@ -1,5 +1,5 @@
 //
-//  MeVc-SettingOrChat.swift
+//  MeVC-SettingOrChat.swift
 //  LittlePink
 //
 //  Created by 郝义鹏 on 2023/2/23.

@@ -1,4 +1,5 @@
 PODS:
+  - ActionSheetPicker-3.0 (2.7.1)
   - Alamofire (5.6.4)
   - AMapFoundation (1.8.0)
   - AMapLocation (2.9.0):
@@ -47,6 +48,7 @@ PODS:
     - SteviaLayout (= 4.7.3)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0
   - Alamofire
   - AMapLocation
   - AMapSearch
@@ -70,6 +72,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ActionSheetPicker-3.0
     - Alamofire
     - AMapFoundation
     - AMapLocation
@@ -98,6 +101,7 @@ SPEC REPOS:
     - YPImagePicker
 
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: 36da254b97a09ff89679ecb8b8510bd3e5bdc773
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   AMapFoundation: f48153f724114b58da9b01875ab88a1f6856e3db
   AMapLocation: f5eb11e11c62f0f599f80b578eec8a1f70deb985
@@ -125,6 +129,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
   YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: cd554fded0acd15583ae4374a35b0eb7dc56f010
+PODFILE CHECKSUM: 221ad7a8b200182b9c748014ea95536ddfd6d608
 
 COCOAPODS: 1.11.3
