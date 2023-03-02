@@ -12,7 +12,11 @@ extension MeVC{
     @objc func settingOrChat(){
         if isMySelf{//设置
             
+            let settingTableVC = storyboard!.instantiateViewController(identifier: kSettingTableVCID) as! SettingTableVC
             
+            settingTableVC.user = user
+            
+            present(settingTableVC, animated: true)
             
             
         }else{

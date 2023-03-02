@@ -51,9 +51,8 @@ extension NoteDetailVC{
                         with: .automatic
                     )
                 }
-            //如果不是展开状态
-            }else{
-                //找到当前第一个cell
+            
+            }else{//如果不是展开状态找到当前第一个cell
                 let cell = tableView.cellForRow(at: IndexPath(row: 0, section: commentSection)) as! ReplyCell
                 cell.showAllReplyBtn.setTitle("展示 \(replies[commentSection].replies.count - 1) 条回复", for: .normal)
             }

@@ -25,6 +25,9 @@ extension NoteDetailVC{
         
         note.delete { res in
             if case .success = res{
+                //用户表的noteCount -1 
+                try? self.author?.set(kNoteCountCol, value: self.author!.getExactIntVal(kNoteCountCol) - 1)
+                self.author?.save{ _ in }
                 DispatchQueue.main.async {
                     self.showTextHUD("笔记已删除")
                 }

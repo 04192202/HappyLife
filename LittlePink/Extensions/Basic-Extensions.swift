@@ -1,10 +1,11 @@
 //
-//  Extensions.swift
+//  Basic-Extensions.swift
 //  LittlePink
 //
-//  Created by 郝义鹏 on 2023/1/31.
+//  Created by 郝义鹏 on 2023/3/2.
 //
 
+import Foundation
 import UIKit
 import DateToolsSwift
 import AVFoundation
@@ -18,7 +19,7 @@ extension Int{
         if tenThousand < 1{
             return "\(self)"
         }else if hundredMillion >= 1{
-            //round 四舍五入 eg: 1.32 -> 13.2 -> 13 - > 1.3 
+            //round 四舍五入 eg: 1.32 -> 13.2 -> 13 - > 1.3
             return "\(round(hundredMillion * 10) / 10)亿"
         }else{
             return "\(round(tenThousand * 10) / 10)万"
@@ -26,22 +27,17 @@ extension Int{
     }
 }
 
-
-
-
 extension String{
-    var isBlank: Bool{
-        self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-    }
+    var isBlank: Bool{ self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
     
     //判断字符串是否符合正则表达式kPhoneRegEx
-    var isPhoneNum : Bool{
-        Int(self) != nil && NSRegularExpression(kPhoneRegEx).matches(self)
-    }
+    var isPhoneNum : Bool{ Int(self) != nil && NSRegularExpression(kPhoneRegEx).matches(self) }
     
-    var isAuthCode: Bool{
-        Int(self) != nil && NSRegularExpression(kAuthCodeRegEx).matches(self)
-    }
+    var isAuthCode: Bool{ Int(self) != nil && NSRegularExpression(kAuthCodeRegEx).matches(self) }
+    
+    //密码验证
+    var isPassword: Bool { NSRegularExpression(kPasswordRegEx).matches(self) }
+    
 //随机的生成昵称
     static func randomString(_ length:Int) -> String{
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -65,8 +61,6 @@ extension String{
         ]
         return NSMutableAttributedString(string: self, attributes: attr)
     }
-    
-    
 }
 
 extension NSRegularExpression {
@@ -131,164 +125,6 @@ extension URL{
     }
 }
 
-extension UIButton{
-    
-    func setToEnabled(){
-        isEnabled = true
-        backgroundColor = mainColor
-    }
-    func setToDisabled(){
-        isEnabled = false
-        backgroundColor = mainLightColor
-    }
-    //变成胶囊按钮
-    func makeCapsule(_ color: UIColor = .label){
-        layer.cornerRadius = frame.height / 2
-        layer.borderWidth = 1
-        layer.borderColor = color.cgColor
-    }
-    
-}
-
-extension UIImage{
-    //初始化构造器三原则:
-    //1.指定构造器必须调用它直接父类的指定构造器方法--见FollowVC
-    //2.便利构造器必须调用同一个类中定义的其它初始化方法
-    //3.便利构造器在最后必须调用一个指定构造器
-    convenience init?(_ data: Data?) {
-        if let unwrappedData = data{
-            self.init(data: unwrappedData)
-        }else{
-            return nil
-        }
-    }
-    
-    enum JPEGQuality: CGFloat {
-        case lowest  = 0
-        case low     = 0.25
-        case medium  = 0.5
-        case high    = 0.75
-        case highest = 1
-    }
-    
-    func jpeg(_ jpegQuality: JPEGQuality) -> Data?{
-        jpegData(compressionQuality: jpegQuality.rawValue)
-    }
-}
-
-extension UITextField{
-    var unwrappedText: String { text ?? "" }
-    var exactText: String { unwrappedText.isBlank ? "" : unwrappedText }
-    var isBlank : Bool { unwrappedText.isBlank }
-}
-extension UITextView{
-    var unwrappedText: String { text ?? "" }
-    var exactText: String { unwrappedText.isBlank ? "" : unwrappedText }
-    var isBlank : Bool { unwrappedText.isBlank }
-}
-
-extension UIView{
-    @IBInspectable
-    var radius: CGFloat{
-        get{
-            layer.cornerRadius
-        }
-        set{
-            clipsToBounds = true
-            layer.cornerRadius = newValue
-        }
-    }
-}
-////改变UIAlertAction里的字体颜色 keyvalue coding (kvc)改提示框的UI oc
-extension UIAlertAction{
-    func setTitleColor(_ color: UIColor){
-        setValue(color, forKey: "titleTextColor")
-    }
-    var titleTextColor: UIColor? {
-        get {
-            value(forKey: "titleTextColor") as? UIColor
-        }
-        set {
-            setValue(newValue, forKey: "titleTextColor")
-        }
-    }
-}
-
-
-extension UIViewController{
-    
-    // MARK: - 展示加载框或提示框
-    
-    // MARK: 加载框--手动隐藏
-    func showLoadHUD(_ title: String? = nil){
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
-        hud.label.text = title
-    }
-    func hideLoadHUD(){
-        DispatchQueue.main.async {
-            MBProgressHUD.hide(for: self.view, animated: true)
-        }
-    }
-    
-    // MARK: 提示框--自动隐藏
-    func showTextHUD(_ title: String, _ inCurrentView: Bool = true, _ subTitle: String? = nil){
-        var viewToShow = view!
-        if !inCurrentView{
-            viewToShow = UIApplication.shared.windows.last!
-        }
-        let hud = MBProgressHUD.showAdded(to: viewToShow, animated: true)
-        hud.mode = .text //不指定的话显示菊花和下面配置的文本
-        hud.label.text = title
-        hud.detailsLabel.text = subTitle
-        hud.hide(animated: true, afterDelay: 2)
-    }
-    
-    func showLoginHUD(){
-        showTextHUD("请先登录")
-    }
-    
-    //用于在本vc调用,让他显示到别的vc(如父vc)里去
-    func showTextHUD(_ title: String, in view: UIView, _ subTitle: String? = nil){
-        let hud = MBProgressHUD.showAdded(to: view, animated: true)
-        hud.mode = .text //不指定的话显示菊花和下面配置的文本
-        hud.label.text = title
-        hud.detailsLabel.text = subTitle
-        hud.hide(animated: true, afterDelay: 2)
-    }
-    
-    // MARK: 点击空白处收起键盘
-    func hideKeyboardWhenTappedAround(){
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        //保证tap手势不会影响到其他touch类控件的手势
-        //若不设，则本页面有tableview时，点击cell不会触发didSelectRowAtIndex（除非长按）
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    @objc func dismissKeyboard(){
-        view.endEditing(true) //让view中的所有textfield失去焦点--即关闭小键盘
-    }
-    //子视图控制器固定三步走
-    func add(child vc: UIViewController){
-        addChild(vc)
-        vc.view.frame = view.bounds //若vc是代码创建的需加这句(后面的view即为某个containerview),若都是sb上创建的可不加.建议加
-        view.addSubview(vc.view)
-        vc.didMove(toParent: self)
-    }
-    func remove(child vc: UIViewController){
-        vc.willMove(toParent: nil)
-        vc.view.removeFromSuperview()
-        vc.removeFromParent()
-    }
-    func removeChildren(){
-        if !children.isEmpty{
-            for vc in children{
-                remove(child: vc)
-            }
-        }
-    }
-    
-}
-
 extension Bundle{
     var appName: String{
         if let appName = localizedInfoDictionary?["CFBundleDisplayName"] as? String{
@@ -311,7 +147,6 @@ extension Bundle{
         }
         fatalError("加载\(type)类型的view失败")
     }
-
 }
 
 extension FileManager{

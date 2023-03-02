@@ -12,13 +12,9 @@ import Kingfisher
 class ReplyCell: UITableViewCell {
 
     @IBOutlet weak var avatarImageView: UIImageView!
-    
     @IBOutlet weak var nickNameLabel: UILabel!
-    
     @IBOutlet weak var authorLabel: UILabel!
-    
     @IBOutlet weak var replyTextLabel: UILabel!
-    
     @IBOutlet weak var showAllReplyBtn: UIButton!
     
     var reply: LCObject?{

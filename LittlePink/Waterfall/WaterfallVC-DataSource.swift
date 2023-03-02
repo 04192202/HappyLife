@@ -42,6 +42,9 @@ extension WaterfallVC{
             let offset = isMyDraft ? 1 : 0
             cell.note = notes[indexPath.item - offset]
             
+            //给每个cell都配置一个heroid
+            cell.hero.id = "noteHeroID\(indexPath.item)"
+            
             return cell
         }
     }

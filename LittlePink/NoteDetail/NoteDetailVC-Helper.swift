@@ -69,4 +69,13 @@ extension NoteDetailVC{
         //UI
         self.commentCount += offset
     }
+    
+    
+    func backToCell(){
+        //如果用户是从瀑布流cell过来需要更新cell的点赞去重
+        if let cellItem = cellItem{
+            delegate?.updateLikeBtn(cellItem: cellItem, isLike: isLike, likeCount: likeCount)
+        }
+        dismiss(animated: true)
+    }
 }

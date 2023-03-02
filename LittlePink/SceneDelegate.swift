@@ -20,6 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         kStatusBarH = windowScene.statusBarManager?.statusBarFrame.height ?? 0
+        
+        let userInterfaceStyleInt = UserDefaults.standard.integer(forKey: kUserInterfaceStyle)
+        if userInterfaceStyleInt == 1{
+            window?.overrideUserInterfaceStyle = .light
+        }else if userInterfaceStyleInt == 2{
+            window?.overrideUserInterfaceStyle = .dark
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

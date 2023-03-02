@@ -53,6 +53,10 @@ extension WaterfallVC{
             if let cell = collectionView.cellForItem(at: indexPath) as? WaterfallCell{
                 detailVC.isLikeFromWaterfallCell = cell.isLike
             }
+            
+            detailVC.modalPresentationStyle = .fullScreen
+            detailVC.delegate = self
+            
             //删除笔记后回到首页后刷新首页
             detailVC.delNoteFinished = {
                 self.notes.remove(at:item)
@@ -62,9 +66,21 @@ extension WaterfallVC{
             }
             detailVC.isFromMeVC = isFromMeVC
             detailVC.fromMeVCUser = fromMeVCUser
+            detailVC.cellItem = indexPath.item
+            detailVC.noteHeroID = "noteHeroID\(indexPath.item)"
             
-            detailVC.modalPresentationStyle = .fullScreen
             present(detailVC, animated: true)
         }
     }
 }
+
+extension WaterfallVC: NoteDetailVCDelegate{
+    func updateLikeBtn(cellItem: Int, isLike: Bool, likeCount: Int) {
+       if let cell = collectionView.cellForItem(at: IndexPath(item: cellItem, section: 0)) as? WaterfallCell{
+           cell.likeBtn.isSelected = isLike
+           cell.likeCount = likeCount
+           cell.currentLikeCount = likeCount
+        }
+    }
+}
+

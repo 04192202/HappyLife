@@ -8,6 +8,7 @@
 import ImageSlideshow
 import GrowingTextView
 import LeanCloud
+import Hero
 
 extension NoteDetailVC{
     func config(){
@@ -40,6 +41,11 @@ extension NoteDetailVC{
         tableView.register(UINib(nibName: "CommentView", bundle: nil), forHeaderFooterViewReuseIdentifier: kCommentViewID)
         //注册可重用的section footer(段与段之间的分隔线)
         tableView.register(CommentSectionFooterView.self, forHeaderFooterViewReuseIdentifier: kCommentSectionFooterViewID)
+        //视觉动画（非交互动画）
+        view.hero.id = noteHeroID
+        
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(slide))
+        view.addGestureRecognizer(pan)
     }
     
     func adjustTableHeaderViewHeight(){
@@ -64,6 +70,7 @@ extension NoteDetailVC: GrowingTextViewDelegate{
     }
 }
 
+// MARK: - 监听函数
 
 extension NoteDetailVC{
     @objc private func keyboardWillChangeFrame(_ notification: Notification){
@@ -82,4 +89,46 @@ extension NoteDetailVC{
             view.layoutIfNeeded()
         }
     }
+    
+    @objc private func slide(pan:UIPanGestureRecognizer){
+        let translationX = pan.translation(in: pan.view).x
+        
+        if translationX > 0 {
+            
+            let progress = translationX / (screenRect.width / 3)
+            
+            switch pan.state{
+            case .began:
+                backToCell()
+            case .changed:
+                Hero.shared.update(progress)
+                //移动实时变化
+                let position = CGPoint(x: translationX + view.center.x , y: pan.translation(in: pan.view).y + view.center.y)
+                Hero.shared.apply(modifiers: [.position(position)], to: view)
+            default:
+                //50points/s
+                if progress + pan.velocity(in: pan.view).x / view.bounds.width > 0.5{
+                    Hero.shared.finish()
+                }else{
+                    Hero.shared.cancel()
+                }
+            }
+        }else if translationX < 0 { //左滑进入作者页面
+            let progress = -(translationX / screenRect.width)
+            switch pan.state{
+            case .began:
+                noteToMeVC(author)
+            case .changed:
+                Hero.shared.update(progress)
+            default:
+                if progress > 0.2{
+                    Hero.shared.finish()
+                }else{
+                    Hero.shared.cancel()
+                }
+            }
+        }
+    }
 }
+
+

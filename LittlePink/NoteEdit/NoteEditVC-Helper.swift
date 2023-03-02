@@ -41,4 +41,25 @@ extension NoteEditVC{
         }
         titleCountLabel.text = "\(kMaxNoteTitleCount - titleTextField.unwrappedText.count)"
     }
+    
+    func showAllowPushAlert(){
+        UNUserNotificationCenter.current().getNotificationSettings{ settings in
+            switch settings.authorizationStatus{
+                //未授权，引导用户授权
+            case .denied:
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: #""悦生活"想给您发送通知"#, message: "及时收到好玩又有趣的文章", preferredStyle: .alert)
+                    let notAllowAction = UIAlertAction(title: "不允许", style: .cancel)
+                    let allowAction = UIAlertAction(title: "允许", style: .default){ _ in
+                        jumpToSetting()
+                    }
+                    alert.addAction(notAllowAction)
+                    alert.addAction(allowAction)
+                    self.view.window?.rootViewController?.present(alert, animated: true)
+                }
+            default:
+                break
+            }
+        }
+    }
 }

@@ -34,11 +34,12 @@ extension EditProfileTableVC{
             let acp = ActionSheetStringPicker(
                 title: nil,
                 rows: ["男","女"],
-                initialSelection: gender ? 0 : 1 ,
+                initialSelection: gender ? 0 : 1 ,//初始选项
                 doneBlock: { (_ , index , _ ) in
                     self.gender = index == 0
                 },
-                cancel: { _ in }, origin: cell )
+                cancel: { _ in },
+                origin: cell )
             acp?.show()
             
         case 3:

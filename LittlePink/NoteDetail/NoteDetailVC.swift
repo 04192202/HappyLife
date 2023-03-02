@@ -29,6 +29,11 @@ class NoteDetailVC: UIViewController {
     var isFromMeVC = false
     var fromMeVCUser: LCUser?
     
+    var delegate: NoteDetailVCDelegate?
+    var cellItem : Int?
+    
+    var noteHeroID: String?
+    
     //上方bar
     @IBOutlet weak var authorAvatarBtn: UIButton!
     @IBOutlet weak var authorNickNameBtn: UIButton!
@@ -90,7 +95,6 @@ class NoteDetailVC: UIViewController {
     
     var currentFavCount = 0
     
-    
     var commentCount = 0{
         didSet{
             commentCountLabel.text = "\(commentCount)"
@@ -136,24 +140,18 @@ class NoteDetailVC: UIViewController {
         adjustTableHeaderViewHeight()
     }
     
-    @IBAction func back(_ sender: Any) {
-        dismiss(animated: true)
-    }
-    
-    
+    @IBAction func back(_ sender: Any) { backToCell() }
+    //点击作者头像/昵称
     @IBAction func goToAuthorMeVC(_ sender: Any) { noteToMeVC(author) }
     
     @IBAction func shareOrMore(_ sender: Any) { shareOrMore() }
-    
     //点赞
     @IBAction func like(_ sender: Any) { like() }
     //收藏
-    @IBAction func fav(_ sender: Any) { fav()   }
-    
-    
+    @IBAction func fav(_ sender: Any) { fav() }
+    //评论
     @IBAction func comment(_ sender: Any) { comment() }
-    
-    
+    //发送评论
     @IBAction func postCommentOrReply(_ sender: Any) {
         
         if !textView.isBlank{

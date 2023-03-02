@@ -6,6 +6,7 @@
 //
 
 import LeanCloud
+
 extension NoteEditVC{
     func createNote(){
         do {
@@ -84,7 +85,8 @@ extension NoteEditVC{
             try note.set(kCommentCountCol, value: 0)
             
             //笔记的作者
-            try note.set(kAuthorCol, value: LCApplication.default.currentUser!)
+            let author = LCApplication.default.currentUser!
+            try note.set(kAuthorCol, value: author)
             
             noteGroup.enter()
             note.save { _ in
@@ -95,8 +97,21 @@ extension NoteEditVC{
             
             noteGroup.notify(queue: .main) {
                 //print("笔记内容全部存储结束")
-                self.showTextHUD("发布笔记成功", false)
-            }
+                
+// MARK: -请求通知授权
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge]) { (granted, error) in
+        if let error = error {  print("请求通知授权出错\(error)")    }
+    }
+    //用户经一定的操作后，判断用户对通知的授权状态，若发布2篇以上的笔记请求权限，取消授权弹出自定义请求权限框（ios系统只弹出一次）
+    let noteCount = author.getExactIntVal(kNoteCountCol)
+    if noteCount != 0 , noteCount % 3 == 0{ self.showAllowPushAlert() }
+                
+    //用户表的noteCount + 1
+    try? author.increase(kNoteCountCol)
+    author.save{ _ in }
+                
+    self.showTextHUD("发布笔记成功", false)
+}
             
             if draftNote != nil{
                 navigationController?.popViewController(animated: true)
