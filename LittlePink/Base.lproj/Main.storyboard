@@ -12,38 +12,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--信息-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="信息" image="message.fill" catalog="system" id="YlZ-2y-HoM"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="697" y="623"/>
-        </scene>
-        <!--商城-->
-        <scene sceneID="qF5-Tm-mLW">
-            <objects>
-                <viewController id="Rbm-IO-noF" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mL9-F5-Qvh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Qf1-HB-N0F"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="商城" image="cart.fill" catalog="system" id="Q0O-TH-h8k"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KXq-M0-bu5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3399.1999999999998" y="-886.69950738916259"/>
-        </scene>
         <!--我-->
         <scene sceneID="ai4-N6-Qi2">
             <objects>
@@ -1671,9 +1639,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Vcn-26-r0J" kind="relationship" relationship="viewControllers" id="7Cw-sk-utv"/>
-                        <segue destination="Rbm-IO-noF" kind="relationship" relationship="viewControllers" id="bdG-aB-2pi"/>
                         <segue destination="gTs-29-6uQ" kind="relationship" relationship="viewControllers" id="KdV-oC-Um0"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="I6Z-bs-TEa"/>
                         <segue destination="ZiG-4k-gkO" kind="relationship" relationship="viewControllers" id="hbl-vU-x3J"/>
                     </connections>
                 </tabBarController>
@@ -3045,14 +3011,12 @@
         <image name="PH1" width="1106" height="1024"/>
         <image name="PH3" width="1080" height="1143"/>
         <image name="PH4" width="1080" height="1080"/>
-        <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="ellipsis.message.fill" catalog="system" width="128" height="114"/>
         <image name="heart" width="128" height="128"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
-        <image name="message.fill" catalog="system" width="128" height="114"/>
         <image name="number.circle.fill" catalog="system" width="128" height="123"/>
         <image name="paperplane.circle.fill" catalog="system" width="128" height="123"/>
         <image name="pencil.line" catalog="system" width="128" height="98"/>

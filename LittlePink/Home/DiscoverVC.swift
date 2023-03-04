@@ -44,7 +44,7 @@ class DiscoverVC: ButtonBarPagerTabStripViewController, IndicatorInfoProvider {
     
     
         func indicatorInfo(for pagerTabStripController: XLPagerTabStrip.PagerTabStripViewController) -> XLPagerTabStrip.IndicatorInfo {
-            IndicatorInfo(title: "发现")
+            IndicatorInfo(title: "悦享好生活")
         }
 
 }
